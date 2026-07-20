@@ -26,13 +26,11 @@ export const siteConfig = {
 export const socialLinks: SocialLinks = {
   email: "itbamalahat@gmail.com",
   phone: "+92 3420266614",
-  // TODO: Add verified LinkedIn profile URL
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/itba-malahat",
   github: "https://github.com/ItbaMalahat",
-  // TODO: Add verified Google Scholar URL
+  // TODO: Add Google Scholar profile URL once a public citations page exists
   googleScholar: "",
-  // TODO: Add verified Medium profile URL
-  medium: "",
+  medium: "https://itbamalahat.medium.com/",
   // TODO: Add CV PDF at /public/cv/itba-malahat-cv.pdf before enabling this link
   cv: "",
 };
@@ -137,6 +135,12 @@ export const publications: Publication[] = [
     type: "Conference Paper",
     description:
       "A hybrid physical-security system combining RFID authentication with PIN-based verification to strengthen access control.",
+    links: [
+      {
+        label: "MDPI",
+        url: "https://doi.org/10.3390/materproc2025023019",
+      },
+    ],
   },
   {
     year: "2024",
@@ -304,26 +308,31 @@ export const blogging: WritingEntry[] = [
     title: "Addressing the Deepfake Threat: A Multimodal Approach to Media Integrity",
     description:
       "An introduction to the motivation, architecture, and broader public value of multimodal deepfake detection.",
+    url: "https://itbamalahat.medium.com/addressing-the-deepfake-threat-a-multimodal-approach-to-media-integrity-9a25d0912226",
   },
   {
     title: "PostGIS Performance at Scale: Partitioning vs. Views for Satellite Data",
     description:
       "A practical examination of database design choices for large geospatial datasets.",
+    url: "https://itbamalahat.medium.com/postgis-performance-at-scale-partitioning-vs-views-for-satellite-data-6b46a595a07a",
   },
   {
     title: "Building a Smart Attendance System Using Flutter and Flask",
     description:
       "A technical walkthrough of connecting a mobile application with a Python-based recognition backend.",
+    url: "https://itbamalahat.medium.com/building-a-smart-attendance-system-using-flutter-and-flask-03729bf8786d",
   },
   {
     title: "Debugging: The Key Skill Every Software Engineer Needs to Ace",
     description:
       "A reflection on debugging as a method of reasoning rather than merely correcting code.",
+    url: "https://itbamalahat.medium.com/debugging-the-key-skill-every-software-engineer-needs-to-ace-8c867de9f820",
   },
   {
     title: "How Working as a Researcher Changed Other Areas of My Life",
     description:
       "A personal essay on curiosity, evidence, uncertainty, articulation, and the ways research can reshape how we form opinions.",
+    // TODO: Add verified Medium URL if this essay is published
   },
 ];
 

@@ -42,7 +42,14 @@ const jsonLd = {
   "@type": "Person",
   name: siteConfig.name,
   url: siteConfig.url,
+  email: "itbamalahat@gmail.com",
+  telephone: "+92-342-0266614",
   jobTitle: "AI Researcher and Engineer",
+  sameAs: [
+    "https://www.linkedin.com/in/itba-malahat",
+    "https://github.com/ItbaMalahat",
+    "https://itbamalahat.medium.com/",
+  ],
   knowsAbout: [
     "Trustworthy AI",
     "AI Safety",
@@ -52,7 +59,6 @@ const jsonLd = {
     "AI Systems",
     "Data Engineering",
   ],
-  // TODO: Add verified social profile URLs to sameAs
 };
 
 export default function RootLayout({
