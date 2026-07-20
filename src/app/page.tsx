@@ -8,100 +8,48 @@ import { SocialLinks } from "@/components/social-links";
 import { TimelineEntry } from "@/components/timeline-entry";
 import { WritingEntry } from "@/components/writing-entry";
 import {
-  about,
   awards,
-  blogging,
-  bloggingIntro,
   contact,
   currentExplorations,
-  currentResearch,
-  education,
-  experience,
   leadership,
   outsideWork,
   projects,
   publications,
-  researchInterestTags,
   researchInterests,
   siteConfig,
   socialLinks,
   teaching,
+  timeline,
+  writing,
+  writingIntro,
 } from "@/data/portfolio";
 
 export default function Home() {
-  const publicationsByYear = publications.reduce<Record<string, typeof publications>>(
-    (groups, publication) => {
-      const key = publication.isThesis
-        ? "Undergraduate Thesis"
-        : publication.year;
-      groups[key] = groups[key] ?? [];
-      groups[key].push(publication);
-      return groups;
-    },
-    {},
-  );
+  const publicationsByYear = publications.reduce<
+    Record<string, typeof publications>
+  >((groups, publication) => {
+    const key = publication.isThesis
+      ? "Undergraduate Thesis"
+      : publication.year;
+    groups[key] = groups[key] ?? [];
+    groups[key].push(publication);
+    return groups;
+  }, {});
 
   return (
-    <main id="main" className="mx-auto w-full max-w-6xl px-6 pb-20 md:px-10">
+    <main id="main" className="mx-auto w-full max-w-5xl px-6 pb-20 md:px-10">
       <Hero />
-
-      <section id="about" aria-labelledby="about-heading" className="py-16 sm:py-24">
-        <SectionHeading id="about-heading" title="About" />
-        <div className="max-w-[46rem] space-y-5 text-[16px] leading-8 text-[var(--muted)] sm:text-[17px]">
-          {about.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
 
       <section
         id="research"
         aria-labelledby="research-heading"
-        className="border-t border-[var(--border)] py-16 sm:py-24"
+        className="border-t border-[var(--border)] bg-[var(--background-alt)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
-        <SectionHeading
-          id="research-heading"
-          title="Research Interests"
-          description="Areas where my research and engineering practice meet questions of culture, reliability, and real-world deployment."
-        />
-        <ul className="mb-10 flex flex-wrap gap-2">
-          {researchInterestTags.map((tag) => (
-            <li
-              key={tag}
-              className="border border-[var(--border)] bg-white/60 px-3 py-1.5 text-[13px] text-[var(--muted)]"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
+        <SectionHeading id="research-heading" title="Research Interests" />
         <div className="grid gap-x-12 md:grid-cols-2">
           {researchInterests.map((interest) => (
             <ResearchInterest key={interest.title} {...interest} />
           ))}
-        </div>
-
-        <div className="mt-16 border border-[var(--border)] bg-[var(--accent-soft)] p-6 sm:p-8">
-          <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
-            Current Research
-          </p>
-          <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
-            {currentResearch.title}
-          </h3>
-          <p className="mt-3 text-[14px] text-[var(--muted)]">
-            {currentResearch.role} · {currentResearch.location}
-            <span className="mx-2 text-[var(--border)]">|</span>
-            {currentResearch.period}
-          </p>
-          <div className="mt-5 max-w-3xl space-y-4 text-[16px] leading-8 text-[var(--muted)]">
-            {currentResearch.description.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          {currentResearch.researchQuestion ? (
-            <blockquote className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-[16px] leading-8 text-[var(--foreground)]">
-              {currentResearch.researchQuestion}
-            </blockquote>
-          ) : null}
         </div>
       </section>
 
@@ -111,11 +59,11 @@ export default function Home() {
         className="border-t border-[var(--border)] py-16 sm:py-24"
       >
         <SectionHeading id="publications-heading" title="Publications" />
-        <div className="space-y-10">
+        <div className="max-w-3xl space-y-2">
           {Object.entries(publicationsByYear).map(([group, entries]) => (
             <div key={group}>
               {!entries[0]?.isThesis ? (
-                <h3 className="mb-2 text-[13px] font-medium uppercase tracking-[0.14em] text-[var(--muted)]">
+                <h3 className="mb-1 pt-4 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--muted)] first:pt-0">
                   {group}
                 </h3>
               ) : null}
@@ -130,14 +78,14 @@ export default function Home() {
       <section
         id="projects"
         aria-labelledby="projects-heading"
-        className="border-t border-[var(--border)] py-16 sm:py-24"
+        className="border-t border-[var(--border)] bg-[var(--pale)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
         <SectionHeading
           id="projects-heading"
-          title="Projects"
-          description="Selected research systems, public-interest concepts, and production engineering work."
+          title="Selected Projects"
+          description="Research systems, production engineering work, and public-interest concepts."
         />
-        <div>
+        <div className="max-w-3xl">
           {projects.map((project) => (
             <ProjectEntry key={project.title} {...project} />
           ))}
@@ -145,64 +93,18 @@ export default function Home() {
       </section>
 
       <section
-        id="experience"
-        aria-labelledby="experience-heading"
+        id="timeline"
+        aria-labelledby="timeline-heading"
         className="border-t border-[var(--border)] py-16 sm:py-24"
       >
-        <SectionHeading id="experience-heading" title="Experience" />
-        <div>
-          {experience.map((item) => (
+        <SectionHeading id="timeline-heading" title="Timeline" />
+        <div className="max-w-4xl">
+          {timeline.map((item) => (
             <TimelineEntry
               key={`${item.role}-${item.organisation}-${item.period}`}
               {...item}
             />
           ))}
-        </div>
-
-        <div className="mt-14 border-t border-[var(--border)] pt-14">
-          <h3 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
-            Education
-          </h3>
-          <article className="mt-6 max-w-3xl">
-            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
-              {education.dates}
-            </p>
-            <h4 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
-              {education.degree}
-            </h4>
-            <p className="mt-1 text-[16px] text-[var(--muted)]">
-              {education.institution}
-            </p>
-            {education.thesis ? (
-              <p className="mt-4 text-[15px] leading-7 text-[var(--muted)]">
-                <span className="font-medium text-[var(--foreground)]">
-                  Thesis:
-                </span>{" "}
-                {education.thesis}
-              </p>
-            ) : null}
-            {education.advisor ? (
-              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
-                <span className="font-medium text-[var(--foreground)]">
-                  Advisor:
-                </span>{" "}
-                {education.advisor}
-              </p>
-            ) : null}
-            {education.researchAreas && education.researchAreas.length > 0 ? (
-              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
-                <span className="font-medium text-[var(--foreground)]">
-                  Research Areas:
-                </span>{" "}
-                {education.researchAreas.join(" · ")}
-              </p>
-            ) : null}
-            {education.description ? (
-              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
-                {education.description}
-              </p>
-            ) : null}
-          </article>
         </div>
       </section>
 
@@ -210,10 +112,10 @@ export default function Home() {
         <section
           id="awards"
           aria-labelledby="awards-heading"
-          className="border-t border-[var(--border)] py-16 sm:py-24"
+          className="border-t border-[var(--border)] bg-[var(--background-alt)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
         >
-          <SectionHeading id="awards-heading" title="Awards" />
-          <div>
+          <SectionHeading id="awards-heading" title="Awards & Distinctions" />
+          <div className="max-w-3xl">
             {awards.map((award) => (
               <AwardEntry key={award.title} {...award} />
             ))}
@@ -222,18 +124,17 @@ export default function Home() {
       ) : null}
 
       <section
-        id="blogging"
-        aria-labelledby="blogging-heading"
+        id="writing"
+        aria-labelledby="writing-heading"
         className="border-t border-[var(--border)] py-16 sm:py-24"
       >
-        <SectionHeading id="blogging-heading" title="Blogging" />
-        <div className="mb-10 max-w-[46rem] space-y-4 text-[16px] leading-8 text-[var(--muted)]">
-          {bloggingIntro.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-        <div>
-          {blogging.map((entry) => (
+        <SectionHeading
+          id="writing-heading"
+          title="Writing"
+          description={writingIntro}
+        />
+        <div className="max-w-3xl">
+          {writing.map((entry) => (
             <WritingEntry key={entry.title} {...entry} />
           ))}
         </div>
@@ -245,8 +146,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[15px] font-medium text-[var(--accent)] underline-offset-4 hover:underline"
             >
-              Read more on Medium
-              <span aria-hidden="true">↗</span>
+              Read more on Medium <span aria-hidden="true">↗</span>
             </a>
           </p>
         ) : null}
@@ -255,18 +155,17 @@ export default function Home() {
       <section
         id="beyond"
         aria-labelledby="beyond-heading"
-        className="border-t border-[var(--border)] py-16 sm:py-24"
+        className="border-t border-[var(--border)] bg-[var(--pale)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
         <SectionHeading id="beyond-heading" title="Beyond Research" />
-
-        <div className="space-y-14">
+        <div className="max-w-3xl space-y-14">
           <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
-              Leadership and Community
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
+              Leadership & Community
             </h3>
             <div className="mt-6 space-y-6">
               {leadership.map((item) => (
-                <article key={item.title} className="max-w-3xl">
+                <article key={item.title}>
                   <h4 className="text-[16px] font-semibold text-[var(--foreground)]">
                     {item.title}
                   </h4>
@@ -279,10 +178,10 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
               Teaching
             </h3>
-            <div className="mt-4 max-w-[46rem] space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+            <div className="mt-4 space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
               {teaching.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -290,14 +189,14 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
               Current Explorations
             </h3>
             <ul className="mt-5 flex flex-wrap gap-2">
               {currentExplorations.map((item) => (
                 <li
                   key={item}
-                  className="border border-[var(--border)] bg-white/60 px-3 py-1.5 text-[13px] text-[var(--muted)]"
+                  className="border border-[var(--border)] bg-white px-3 py-1.5 text-[13px] text-[var(--muted)]"
                 >
                   {item}
                 </li>
@@ -306,10 +205,10 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
               Outside Work
             </h3>
-            <div className="mt-4 max-w-[46rem] space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+            <div className="mt-4 space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
               {outsideWork.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -324,14 +223,25 @@ export default function Home() {
         className="border-t border-[var(--border)] py-16 sm:py-24"
       >
         <SectionHeading id="contact-heading" title={contact.heading} />
-        <div className="max-w-[46rem] space-y-5 text-[16px] leading-8 text-[var(--muted)]">
+        <div className="max-w-[44rem] space-y-5 text-[16px] leading-8 text-[var(--muted)]">
           <p>{contact.copy}</p>
           <p>{contact.followUp}</p>
         </div>
-        <div className="mt-8 border border-[var(--border)] bg-[var(--accent-soft)] p-6 sm:p-8">
+        <div className="mt-8 max-w-3xl border border-[var(--border)] bg-[var(--pale)] p-6 sm:p-8">
           <p className="text-[15px] text-[var(--foreground)]">
             <span className="font-medium">Location:</span> {siteConfig.location}
           </p>
+          {socialLinks.phone ? (
+            <p className="mt-3 text-[15px] text-[var(--foreground)]">
+              <span className="font-medium">Phone:</span>{" "}
+              <a
+                href={`tel:${socialLinks.phone.replace(/\s+/g, "")}`}
+                className="text-[var(--accent)] underline-offset-4 hover:underline"
+              >
+                {socialLinks.phone}
+              </a>
+            </p>
+          ) : null}
           <SocialLinks className="mt-5" />
         </div>
       </section>

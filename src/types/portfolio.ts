@@ -5,17 +5,7 @@ export type ExternalLink = {
 
 export type ResearchInterest = {
   title: string;
-  question: string;
   description: string;
-};
-
-export type CurrentResearch = {
-  title: string;
-  role: string;
-  location: string;
-  period: string;
-  description: string[];
-  researchQuestion?: string;
 };
 
 export type Publication = {
@@ -36,10 +26,9 @@ export type Project = {
   technologies?: string[];
   status?: string;
   links?: ExternalLink[];
-  outcome?: string;
 };
 
-export type Experience = {
+export type TimelineEntry = {
   period: string;
   role: string;
   organisation: string;
@@ -56,7 +45,6 @@ export type Education = {
   thesis?: string;
   advisor?: string;
   researchAreas?: string[];
-  description?: string;
 };
 
 export type Award = {
@@ -69,7 +57,8 @@ export type Award = {
 export type WritingEntry = {
   title: string;
   description: string;
-  // TODO: Add verified Medium URL when available
+  topic?: string;
+  year?: string;
   url?: string;
 };
 

@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfafc;
-  --foreground: #1e1b22;
-  --muted: #6f6874;
-  --accent: #65506f;
-  --accent-soft: #f1ebf4;
-  --border: #ded7e2;
+  --background: #ffffff;
+  --background-alt: #fcfaff;
+  --pale: #f6f0ff;
+  --light: #ede1fa;
+  --border: #ded0ec;
+  --accent: #6d28d9;
+  --heading: #4c1d95;
+  --foreground: #201726;
+  --muted: #6b6370;
 }
 
 @theme inline {
@@ -35,7 +38,7 @@ button:focus-visible {
 }
 
 section[id] {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 6.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -73,4 +76,9 @@ section[id] {
   overflow: visible;
   clip: auto;
   white-space: normal;
+}
+
+.author-emphasis {
+  font-weight: 700;
+  color: var(--heading);
 }

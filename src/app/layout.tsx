@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Source_Serif_4 } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { siteConfig } from "@/data/portfolio";
+import { siteConfig, socialLinks } from "@/data/portfolio";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -37,19 +37,22 @@ export const metadata: Metadata = {
   },
 };
 
+const sameAs = [
+  socialLinks.linkedin,
+  socialLinks.github,
+  socialLinks.medium,
+  socialLinks.googleScholar,
+].filter(Boolean);
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteConfig.name,
   url: siteConfig.url,
-  email: "itbamalahat@gmail.com",
-  telephone: "+92-342-0266614",
+  email: socialLinks.email || undefined,
+  telephone: socialLinks.phone ? socialLinks.phone.replace(/\s+/g, "-") : undefined,
   jobTitle: "AI Researcher and Engineer",
-  sameAs: [
-    "https://www.linkedin.com/in/itba-malahat",
-    "https://github.com/ItbaMalahat",
-    "https://itbamalahat.medium.com/",
-  ],
+  sameAs,
   knowsAbout: [
     "Trustworthy AI",
     "AI Safety",
@@ -71,9 +74,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${sourceSerif.variable} h-full antialiased`}
     >
-      <body
-        className="min-h-full bg-[var(--background)] font-[family-name:var(--font-geist-sans)] text-[var(--foreground)]"
-      >
+      <body className="min-h-full bg-white font-[family-name:var(--font-geist-sans)] text-[var(--foreground)]">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

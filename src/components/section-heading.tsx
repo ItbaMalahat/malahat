@@ -14,13 +14,13 @@ export function SectionHeading({
   return (
     <div className="mb-10 max-w-3xl">
       {eyebrow ? (
-        <p className="mb-3 text-[13px] font-medium uppercase tracking-[0.14em] text-[var(--accent)]">
+        <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
           {eyebrow}
         </p>
       ) : null}
       <h2
         id={id}
-        className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl"
+        className="font-[family-name:var(--font-display)] text-3xl font-semibold tracking-tight text-[var(--heading)] sm:text-4xl"
       >
         {title}
       </h2>

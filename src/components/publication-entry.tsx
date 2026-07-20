@@ -11,6 +11,19 @@ type PublicationEntryProps = {
   isThesis?: boolean;
 };
 
+function emphasiseAuthor(authors: string) {
+  const parts = authors.split(/(Itba Malahat)/g);
+  return parts.map((part, index) =>
+    part === "Itba Malahat" ? (
+      <span key={`${part}-${index}`} className="author-emphasis">
+        {part}
+      </span>
+    ) : (
+      <span key={`${part}-${index}`}>{part}</span>
+    ),
+  );
+}
+
 export function PublicationEntry({
   year,
   venue,
@@ -24,44 +37,40 @@ export function PublicationEntry({
   return (
     <article className="border-t border-[var(--border)] py-8 first:border-t-0 first:pt-0">
       <div className="flex flex-wrap items-center gap-3">
-        <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
           {isThesis ? "Undergraduate Thesis" : year}
         </p>
-        {type && !isThesis ? (
-          <span className="rounded-sm bg-[var(--accent-soft)] px-2 py-0.5 text-[12px] font-medium text-[var(--accent)]">
-            {type}
-          </span>
+        {venue ? (
+          <p className="text-[13px] font-medium uppercase tracking-[0.08em] text-[var(--muted)]">
+            {venue}
+          </p>
         ) : null}
-        {isThesis ? (
-          <span className="rounded-sm border border-[var(--border)] px-2 py-0.5 text-[12px] font-medium text-[var(--muted)]">
-             
-          </span>
+        {type && !isThesis ? (
+          <span className="text-[12px] text-[var(--muted)]">{type}</span>
         ) : null}
       </div>
-      <h3 className="mt-3 text-lg font-semibold leading-snug text-[var(--foreground)] sm:text-xl">
+      <h3 className="mt-3 max-w-3xl text-lg font-semibold leading-snug text-[var(--heading)] sm:text-xl">
         {title}
       </h3>
-      <p className="mt-2 text-[15px] text-[var(--muted)]">{authors}</p>
-      {venue ? (
-        <p className="mt-1 text-[14px] italic text-[var(--muted)]">{venue}</p>
-      ) : null}
+      <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
+        {emphasiseAuthor(authors)}
+      </p>
       {description ? (
-        <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+        <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[var(--muted)]">
           {description}
         </p>
       ) : null}
       {links && links.length > 0 ? (
-        <ul className="mt-4 space-y-1 pl-1">
+        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 pl-0">
           {links.map((link) => (
             <li key={`${title}-${link.label}`}>
               <a
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[14px] text-[var(--accent)] underline-offset-4 hover:underline"
+                className="inline-flex items-center gap-1 text-[14px] font-medium text-[var(--accent)] underline-offset-4 hover:underline"
               >
-                {link.label}
-                <span aria-hidden="true">↗</span>
+                {link.label} <span aria-hidden="true">↗</span>
               </a>
             </li>
           ))}
