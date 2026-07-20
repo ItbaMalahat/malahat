@@ -14,8 +14,8 @@ export type CurrentResearch = {
   role: string;
   location: string;
   period: string;
-  description: string;
-  researchQuestion: string;
+  description: string[];
+  researchQuestion?: string;
 };
 
 export type Publication = {
@@ -54,6 +54,8 @@ export type Education = {
   institution: string;
   dates: string;
   thesis?: string;
+  advisor?: string;
+  researchAreas?: string[];
   description?: string;
 };
 
@@ -78,6 +80,7 @@ export type BeyondItem = {
 
 export type SocialLinks = {
   email: string;
+  phone: string;
   linkedin: string;
   github: string;
   googleScholar: string;

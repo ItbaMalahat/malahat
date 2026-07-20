@@ -10,6 +10,8 @@ import { WritingEntry } from "@/components/writing-entry";
 import {
   about,
   awards,
+  blogging,
+  bloggingIntro,
   contact,
   currentExplorations,
   currentResearch,
@@ -19,12 +21,11 @@ import {
   outsideWork,
   projects,
   publications,
+  researchInterestTags,
   researchInterests,
   siteConfig,
   socialLinks,
   teaching,
-  writing,
-  writingIntro,
 } from "@/data/portfolio";
 
 export default function Home() {
@@ -63,6 +64,16 @@ export default function Home() {
           title="Research Interests"
           description="Areas where my research and engineering practice meet questions of culture, reliability, and real-world deployment."
         />
+        <ul className="mb-10 flex flex-wrap gap-2">
+          {researchInterestTags.map((tag) => (
+            <li
+              key={tag}
+              className="border border-[var(--border)] bg-white/60 px-3 py-1.5 text-[13px] text-[var(--muted)]"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
         <div className="grid gap-x-12 md:grid-cols-2">
           {researchInterests.map((interest) => (
             <ResearchInterest key={interest.title} {...interest} />
@@ -81,12 +92,16 @@ export default function Home() {
             <span className="mx-2 text-[var(--border)]">|</span>
             {currentResearch.period}
           </p>
-          <p className="mt-5 max-w-3xl text-[16px] leading-8 text-[var(--muted)]">
-            {currentResearch.description}
-          </p>
-          <blockquote className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-[16px] leading-8 text-[var(--foreground)]">
-            {currentResearch.researchQuestion}
-          </blockquote>
+          <div className="mt-5 max-w-3xl space-y-4 text-[16px] leading-8 text-[var(--muted)]">
+            {currentResearch.description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          {currentResearch.researchQuestion ? (
+            <blockquote className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-[16px] leading-8 text-[var(--foreground)]">
+              {currentResearch.researchQuestion}
+            </blockquote>
+          ) : null}
         </div>
       </section>
 
@@ -166,6 +181,22 @@ export default function Home() {
                 {education.thesis}
               </p>
             ) : null}
+            {education.advisor ? (
+              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
+                <span className="font-medium text-[var(--foreground)]">
+                  Advisor:
+                </span>{" "}
+                {education.advisor}
+              </p>
+            ) : null}
+            {education.researchAreas && education.researchAreas.length > 0 ? (
+              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
+                <span className="font-medium text-[var(--foreground)]">
+                  Research Areas:
+                </span>{" "}
+                {education.researchAreas.join(" · ")}
+              </p>
+            ) : null}
             {education.description ? (
               <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
                 {education.description}
@@ -191,18 +222,18 @@ export default function Home() {
       ) : null}
 
       <section
-        id="writing"
-        aria-labelledby="writing-heading"
+        id="blogging"
+        aria-labelledby="blogging-heading"
         className="border-t border-[var(--border)] py-16 sm:py-24"
       >
-        <SectionHeading id="writing-heading" title="Writing" />
+        <SectionHeading id="blogging-heading" title="Blogging" />
         <div className="mb-10 max-w-[46rem] space-y-4 text-[16px] leading-8 text-[var(--muted)]">
-          {writingIntro.map((paragraph) => (
+          {bloggingIntro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
         <div>
-          {writing.map((entry) => (
+          {blogging.map((entry) => (
             <WritingEntry key={entry.title} {...entry} />
           ))}
         </div>

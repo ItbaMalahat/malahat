@@ -34,7 +34,7 @@ export function PublicationEntry({
         ) : null}
         {isThesis ? (
           <span className="rounded-sm border border-[var(--border)] px-2 py-0.5 text-[12px] font-medium text-[var(--muted)]">
-            Not peer-reviewed
+             
           </span>
         ) : null}
       </div>

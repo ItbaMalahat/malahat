@@ -24,9 +24,9 @@ export const siteConfig = {
 };
 
 export const socialLinks: SocialLinks = {
-  // TODO: Add verified email address
-  email: "",
-  // TODO: Add verified LinkedIn URL
+  email: "itbamalahat@gmail.com",
+  phone: "+92 3420266614",
+  // TODO: Add verified LinkedIn profile URL
   linkedin: "",
   github: "https://github.com/ItbaMalahat",
   // TODO: Add verified Google Scholar URL
@@ -44,19 +44,18 @@ export const navigation: NavItem[] = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Awards", href: "#awards" },
-  { label: "Writing", href: "#writing" },
+  { label: "Blogging", href: "#blogging" },
   { label: "Beyond", href: "#beyond" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const hero = {
-  eyebrow: "Research Assistant · DeepTrace: South Asia Deepfake Detection Challenge",
   name: "Itba Malahat",
   descriptor: "Trustworthy AI, Multimodal Learning & AI Systems",
   paragraphs: [
     "I am an AI researcher and engineer from Pakistan working at the intersection of trustworthy AI, multimodal learning, AI safety, and production systems.",
     "My research examines how AI systems perform across cultures, languages, and regions that remain underrepresented in mainstream datasets and benchmarks. I am particularly interested in culturally grounded evaluation, multimodal deepfake detection, and the development of reliable AI systems for the Global South.",
-    "Currently, I am a Research Assistant with the DeepTrace: South Asia Deepfake Detection Challenge, where I contribute to culturally representative datasets, evaluation pipelines, and benchmarking methods for deepfake detection across South Asia.",
+    "I currently contribute to culturally representative datasets, evaluation pipelines, and benchmarking methods for deepfake detection across South Asia.",
     "Before moving more deeply into research, I worked across production AI, data engineering, agricultural technology, enterprise analytics, and technical support. These experiences continue to shape how I approach research: not only as a question of model performance, but also of reliability, deployment, accessibility, and real-world impact.",
   ],
 };
@@ -68,6 +67,15 @@ export const about = {
     "I am especially drawn to problems where technical performance cannot be separated from social context: synthetic media, misinformation, accessibility, culturally grounded evaluation, and the representation of the Global South in AI research.",
   ],
 };
+
+export const researchInterestTags = [
+  "Trustworthy AI",
+  "AI Safety",
+  "Multimodal Learning",
+  "Computer Vision",
+  "Deepfake Detection",
+  "Large Language Models (LLMs)",
+];
 
 export const researchInterests: ResearchInterest[] = [
   {
@@ -111,53 +119,61 @@ export const currentResearch: CurrentResearch = {
   title: "DeepTrace: South Asia Deepfake Detection Challenge",
   role: "Research Assistant",
   location: "Pakistan",
-  period: "November 2025 – Present",
-  description:
-    "DeepTrace is a multi-country research initiative focused on developing culturally grounded datasets, benchmarks, and tools for deepfake detection across South Asia.",
-  researchQuestion:
-    "How can deepfake detection systems be evaluated fairly and effectively when cultural context, language, and regional media practices shape both the threat and the evidence?",
+  period: "Nov 2025 – Present",
+  description: [
+    "Selected as one of five Global South Research Assistants by Dr. Dilrukshi Gamage, Senior Lecturer at the University of Colombo School of Computing, to develop open-source benchmarks for culturally grounded deepfake detection, collaborating with an international research team to advance trustworthy AI and AI safety research across South Asia.",
+    "Developing LLM-powered evaluation pipelines and culturally grounded data curation workflows to support reproducible benchmarking of multimodal AI systems for misinformation detection and responsible AI research.",
+  ],
 };
 
 export const publications: Publication[] = [
   {
-    year: "2026",
-    title: "The Socio-Political Implications of Deepfakes in Developing Countries",
+    year: "2025",
+    title:
+      "Double Layered Authentication Door-lock System Utilizing Hybrid RFID-PIN Technology for Enhanced Security",
+    authors: "A. Ramzan, W. Farhan, I. Malahat, N. Afzal",
+    venue:
+      "3rd International Conference on Modern Technologies in Mechanical and Materials Engineering – MTME 2025, Materials Proceedings, MDPI, 2025 (accepted)",
+    type: "Conference Paper",
+    description:
+      "A hybrid physical-security system combining RFID authentication with PIN-based verification to strengthen access control.",
+  },
+  {
+    year: "2024",
+    title: "The Socio-Political Implications of Deepfake in Developing Countries",
     authors: "L. Noor, I. Malahat, H. Noor",
+    venue: "Preprints 2024, 2024091654",
     type: "Preprint",
     description:
       "A study of how deepfakes interact with political instability, media literacy, institutional trust, and information ecosystems in developing countries.",
-    // TODO: Add verified preprint URL
-  },
-  {
-    year: "2025",
-    title:
-      "Double-Layered Authentication Door-Lock System Utilizing Hybrid RFID-PIN Technology for Enhanced Security",
-    authors: "A. Ramzan, W. Farhan, I. Malahat, N. Afzal",
-    venue: "Materials Proceedings, 23(1), 19",
-    description:
-      "A hybrid physical-security system combining RFID authentication with PIN-based verification to strengthen access control.",
-    // TODO: Add verified paper URL
+    links: [
+      {
+        label: "DOI",
+        url: "https://doi.org/10.20944/preprints202409.1654.v1",
+      },
+    ],
   },
   {
     year: "Undergraduate Thesis",
-    title: "Audio Visual Integrity Analyzer: A Multimodal Deepfake Detection Framework",
+    title: "Audio Visual Integrity Analyzer for Multimodal Deepfake Detection",
     authors: "I. Malahat",
     venue:
       "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology",
     type: "Undergraduate Thesis",
     isThesis: true,
     description:
-      "A unified deepfake detection framework for image, video, and audio content. AVIA combined ConvNeXt for manipulated-image detection, GenConViT for manipulated-video detection, and CNN and BiLSTM architectures for synthetic-audio detection. The system was trained and evaluated across twelve public datasets and was designed to make media-integrity analysis more accessible through a unified interface.",
+      "A multimodal deepfake detection framework integrating ConvNeXt for image forensics, GenConViT for video analysis, and a CNN-BiLSTM architecture for synthesized speech detection. Trained and evaluated on 12 benchmark datasets comprising over 5,000 image, audio, and video samples, with an end-to-end web-based verification platform for multimodal media authentication.",
   },
 ];
 
 export const projects: Project[] = [
   {
-    title: "AVIA — Audio Visual Integrity Analyzer",
+    title: "Audio Visual Integrity Analyzer for Multimodal Deepfake Detection",
     category: "Multimodal Deepfake Detection",
     description: [
-      "An end-to-end framework for identifying manipulated image, video, and audio content through specialised deep-learning models.",
-      "The system was designed to bring multiple detection modalities into a single application rather than requiring users to rely on separate tools for each media type.",
+      "Designed and developed a multimodal deepfake detection framework integrating ConvNeXt for image forensics, GenConViT for video analysis, and a CNN-BiLSTM architecture for synthesized speech detection, enabling unified verification across images, videos, and audio.",
+      "Trained and evaluated the framework on 12 benchmark datasets comprising over 5,000 image, audio, and video samples, implementing specialised pipelines to distinguish GAN-generated and diffusion-generated synthetic media while improving robustness across multiple modalities.",
+      "Built an end-to-end web-based verification platform to demonstrate multimodal media authentication, translating research into an accessible tool for detecting AI-generated misinformation.",
     ],
     technologies: [
       "Python",
@@ -171,85 +187,56 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "DeepTrace Evaluation Pipelines",
-    category: "Trustworthy AI · Multimodal Evaluation",
-    description: [
-      "Research pipelines supporting the evaluation of deepfake datasets and detection systems across South Asian cultural and geographic contexts.",
-      "The work includes dataset organisation, structured evaluation, LLM-assisted analysis, benchmarking, documentation, and reproducibility.",
-    ],
-  },
-  {
-    title: "AI-Powered Object Recognition Glasses",
-    category: "Accessibility · Computer Vision · Multilingual AI",
-    status: "Concept / In Development",
-    description: [
-      "An ongoing public-interest technology concept for assisting blind and visually impaired users.",
-      "A wearable camera observes the user’s surroundings, an AI model identifies relevant objects or obstacles, and the system communicates this information through speech in English, Urdu, and regional Pakistani languages.",
-      "The project combines computer vision, edge or mobile hardware, speech generation, accessibility design, and low-resource language support.",
-    ],
-  },
-  {
-    title: "Agricultural Data Infrastructure",
-    category: "Data Engineering · Geospatial AI",
-    description: [
-      "Designed production-grade Apache Airflow pipelines supporting AI-driven agricultural analytics across more than two million acres.",
-      "The infrastructure handled geospatial data processing, automated reporting, cloud storage, monitoring, historisation, and production troubleshooting.",
-    ],
-    technologies: [
-      "Apache Airflow",
-      "Python",
-      "PostgreSQL",
-      "AWS S3",
-      "CloudWatch",
-      "QGIS",
-      "PGVersion",
-    ],
-  },
-  {
-    title: "Enterprise Analytics Systems",
-    category: "Data Science · Business Intelligence",
-    description: [
-      "Developed three enterprise analytics products during my internship at Procter & Gamble for teams operating across Pakistan and Gulf markets.",
-      "The work included fault-tolerant ETL pipelines, automated validation checks, monitoring dashboards, and solutions for recurring billing and reporting inconsistencies.",
-    ],
-  },
-  {
-    title: "Smart Attendance System",
+    title: "Smart Attendance System with Multi-face Facial Detection",
     category: "Computer Vision · Full-Stack Development",
     description: [
-      "A facial-recognition attendance system developed using Flutter and Flask.",
-      "The application connected a mobile interface to a Python backend for identity verification and attendance management.",
+      "Developed a Python backend service for real-time multi-face recognition using MTCNN and SVM models, achieving 91% detection accuracy and processing times under 850ms per image.",
+      "Programmed a cross-platform application backed by a Flask architecture, enabling seamless real-time multi-face image analysis and consistent multi-device performance.",
+      "Applied data augmentation techniques and fine-tuned models to enhance recognition accuracy across diverse lighting conditions.",
     ],
+    technologies: ["Python", "Flask", "MTCNN", "SVM", "Computer Vision"],
   },
   {
-    title: "Double-Layered Authentication Door Lock",
-    category: "Embedded Systems · Security",
+    title: "CD Pipeline for Containerized Application Deployment",
+    category: "DevOps · Cloud Infrastructure",
     description: [
-      "A physical access-control system combining RFID authentication with PIN verification.",
-      "The project was subsequently published in Materials Proceedings.",
+      "Reduced manual deployment time by 80% by orchestrating a Jenkins-based CI/CD pipeline for containerized ReactJS and Node.js services across 3 AWS EC2 environments (Dev, Testing, Staging).",
+      "Enforced deployment consistency and security by configuring Docker containers for frontend, backend, and database services, and implementing shared security groups and IAM roles for environment parity.",
+      "Strengthened code reliability and quality control by deploying automated pipelines for unit and integration testing, enabling seamless container-to-container communication.",
     ],
+    technologies: ["Jenkins", "Docker", "AWS EC2", "ReactJS", "Node.js"],
   },
 ];
 
 export const experience: Experience[] = [
   {
-    period: "2025 – Present",
+    period: "Nov 2025 – Present",
     role: "Research Assistant",
     organisation: "DeepTrace: South Asia Deepfake Detection Challenge",
-    location: "University of Colombo School of Computing · Remote",
+    location: "Pakistan · University of Colombo School of Computing",
     description: [
-      "Contributing to the creation and evaluation of culturally grounded deepfake datasets and benchmarks spanning Pakistan, Nepal, Sri Lanka, India, and Bangladesh.",
-      "My responsibilities include multimodal data curation, LLM-assisted evaluation, survey research, benchmarking, documentation, and the study of fairness and generalisation in South Asian contexts.",
+      "Selected as one of five Global South Research Assistants by Dr. Dilrukshi Gamage, Senior Lecturer at the University of Colombo School of Computing, to develop open-source benchmarks for culturally grounded deepfake detection, collaborating with an international research team to advance trustworthy AI and AI safety research across South Asia.",
+      "Developing LLM-powered evaluation pipelines and culturally grounded data curation workflows to support reproducible benchmarking of multimodal AI systems for misinformation detection and responsible AI research.",
     ],
   },
   {
-    period: "2025 – 2026",
+    period: "Mar 2024 – May 2025",
+    role: "Student Researcher",
+    organisation:
+      "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology",
+    description: [
+      "Contributed to research spanning physical security systems, deepfake socio-political analysis, and adaptive mammogram preprocessing.",
+      "Synthesized findings from 70+ peer-reviewed studies to identify research gaps in adaptive mammogram preprocessing, producing a survey manuscript targeting journal publication.",
+    ],
+  },
+  {
+    period: "Dec 2025 – Jun 2026",
     role: "Senior Technical Support Engineer",
     organisation: "Motive",
     description: [
-      "Worked on complex production issues affecting AI Dashcams, AI Omnicams, electronic logging devices, telematics hardware, cloud services, and REST APIs used by enterprise and mid-market fleets.",
-      "I collaborated with Engineering, Product, QA, Account Management, and support teams to reproduce defects, analyse logs, isolate firmware and hardware behaviour, validate fixes, and maintain service reliability.",
-      "The role gave me direct exposure to what happens when AI leaves a controlled development environment and becomes part of a large-scale physical system.",
+      "Diagnosed and resolved over 200 complex production issues spanning AI-powered telematics systems, firmware, cloud infrastructure, and API integrations for enterprise fleets, collaborating directly with engineering teams to isolate defects and improve platform reliability.",
+      "Partnered with Product, Quality Assurance, and Account Management teams to reproduce customer-reported defects, isolate firmware issues, validate fixes, and drive timely product improvements through structured bug investigations.",
+      "Leveraged Grafana, Redash, and Snowflake to query and analyse large-scale historical telematics datasets, monitor platform health, identify usage trends, and provide data-driven insights for troubleshooting and incident resolution.",
     ],
     technologies: [
       "Grafana",
@@ -261,53 +248,58 @@ export const experience: Experience[] = [
     ],
   },
   {
-    period: "2025",
+    period: "Apr 2025 – Dec 2025",
     role: "Automations Engineer",
     organisation: "Farmdar",
     description: [
-      "Designed and maintained twelve production-grade Apache Airflow pipelines supporting agricultural analytics across more than two million acres in Pakistan and overseas markets.",
+      "Delivered AI-driven crop yield analytics across 2M+ acres via 12 production-grade backend pipelines on Apache Airflow for enterprise clients across Pakistan and international markets.",
+      "Enabled reliable delivery of 100+ optimised geospatial reports leveraging AWS S3 and CloudWatch for large-scale data handling and monitoring, while resolving over 60 pipeline issues.",
+      "Accelerated QA workflows by 80% and reduced geometry load times in QGIS by implementing historisation and version control across develop, prod, and staging databases using PGVersion.",
     ],
-    highlights: [
-      "Produced more than one hundred optimised geospatial reports.",
-      "Resolved more than sixty production pipeline issues.",
-      "Built AWS S3 and CloudWatch workflows.",
-      "Improved quality-assurance processes by approximately 80%.",
-      "Reduced QGIS geometry-loading times.",
-      "Implemented PGVersion-based data historisation across development, staging, and production environments.",
+    technologies: [
+      "Apache Airflow",
+      "Python",
+      "AWS S3",
+      "CloudWatch",
+      "QGIS",
+      "PGVersion",
     ],
   },
   {
-    period: "2024",
-    role: "Data Science Intern",
+    period: "Jul 2024 – Sep 2024",
+    role: "Summer Intern — Data Engineering & DevOps",
     organisation: "Procter & Gamble",
     description: [
-      "Selected among 20 interns from approximately 6,500 applicants.",
-      "Developed three enterprise analytics products for Pakistan and Gulf markets, achieving approximately 95% accuracy in their target workflows.",
-      "Built fault-tolerant ETL processes with more than ten validation checks and three monitoring dashboards.",
-      "The resulting systems eliminated recurring reporting discrepancies and reduced manual analyst rework by approximately forty hours per month.",
+      "Secured a top 0.35% selection (20 out of 6,500 applicants) for P&G’s Summer Internship Program, with a focus on Data Engineering and DevOps.",
+      "Enabled data-driven decision-making across Pakistan and Gulf markets with 95% accuracy, ensuring scalable deployment and robust post-launch support, by developing 3 enterprise-grade analytics products.",
+      "Eliminated recurring billing/reporting data discrepancies and reduced analyst rework by 40 hours per month, via a fault-tolerant ETL pipeline with 10+ automated validation checks and 3 monitoring dashboards.",
     ],
   },
 ];
 
 export const education: Education = {
   degree: "Bachelor of Science in Computer Science",
-  institution:
-    "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology",
-  dates: "2021 – 2025",
+  institution: "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology",
+  dates: "Sep 2021 – Jun 2025",
   thesis: "Audio Visual Integrity Analyzer for Multimodal Deepfake Detection",
-  description:
-    "Intelligent systems, research, and the relationship between technology and society.",
+  advisor: "Dr Khurram Khan Jadoon, Associate Professor at GIK Institute",
+  researchAreas: [
+    "Computer Vision",
+    "Machine Learning",
+    "Trustworthy AI",
+    "Multimodal Learning",
+  ],
 };
 
 // TODO: Add verified awards and distinctions before enabling this section in the UI
 export const awards: Award[] = [];
 
-export const writingIntro = [
-  "Writing helps me understand how individual technical decisions connect to larger systems.",
+export const bloggingIntro = [
+  "Blogging helps me understand how individual technical decisions connect to larger systems.",
   "I write about artificial intelligence, data engineering, software development, research, and the social consequences of emerging technologies.",
 ];
 
-export const writing: WritingEntry[] = [
+export const blogging: WritingEntry[] = [
   {
     title: "Addressing the Deepfake Threat: A Multimodal Approach to Media Integrity",
     description:
@@ -399,8 +391,11 @@ export const footer = {
 
 export function getAvailableSocialLinks() {
   return [
+    socialLinks.phone
+      ? { label: socialLinks.phone, href: `tel:${socialLinks.phone.replace(/\s+/g, "")}`, external: false }
+      : null,
     socialLinks.email
-      ? { label: "Email", href: `mailto:${socialLinks.email}`, external: false }
+      ? { label: socialLinks.email, href: `mailto:${socialLinks.email}`, external: false }
       : null,
     socialLinks.linkedin
       ? { label: "LinkedIn", href: socialLinks.linkedin, external: true }

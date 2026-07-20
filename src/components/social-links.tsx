@@ -8,9 +8,9 @@ export function SocialLinks({ className = "" }: { className?: string }) {
   }
 
   return (
-    <ul className={`flex flex-wrap gap-x-5 gap-y-3 ${className}`}>
+    <ul className={`flex flex-wrap items-center gap-x-5 gap-y-3 ${className}`}>
       {links.map((link) => (
-        <li key={link.label}>
+        <li key={`${link.label}-${link.href}`}>
           <a
             href={link.href}
             {...(link.external

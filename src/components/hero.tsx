@@ -8,12 +8,9 @@ export function Hero() {
       aria-labelledby="hero-name"
       className="scroll-mt-28 border-b border-[var(--border)] pb-16 pt-10 sm:pb-20 sm:pt-14"
     >
-      <p className="inline-block border border-[var(--border)] bg-[var(--accent-soft)] px-3 py-1.5 text-[12px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
-        {hero.eyebrow}
-      </p>
       <h1
         id="hero-name"
-        className="mt-6 max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.25rem)] font-semibold leading-[0.95] tracking-tight text-[var(--foreground)]"
+        className="max-w-4xl font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.25rem)] font-semibold leading-[0.95] tracking-tight text-[var(--foreground)]"
       >
         {hero.name}
       </h1>
