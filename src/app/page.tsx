@@ -9,16 +9,13 @@ import { TimelineEntry } from "@/components/timeline-entry";
 import { WritingEntry } from "@/components/writing-entry";
 import {
   awards,
+  community,
   contact,
-  currentExplorations,
-  leadership,
-  outsideWork,
   projects,
   publications,
   researchInterests,
   siteConfig,
   socialLinks,
-  teaching,
   timeline,
   writing,
   writingIntro,
@@ -46,7 +43,7 @@ export default function Home() {
         className="border-t border-[var(--border)] bg-[var(--background-alt)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
         <SectionHeading id="research-heading" title="Research Interests" />
-        <div className="grid gap-x-12 md:grid-cols-2">
+        <div className="grid overflow-hidden rounded border border-[var(--border)] bg-[var(--border)] gap-px md:grid-cols-2">
           {researchInterests.map((interest) => (
             <ResearchInterest key={interest.title} {...interest} />
           ))}
@@ -78,7 +75,7 @@ export default function Home() {
       <section
         id="projects"
         aria-labelledby="projects-heading"
-        className="border-t border-[var(--border)] bg-[var(--pale)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
+        className="border-t border-[var(--border)] bg-[var(--light)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
         <SectionHeading
           id="projects-heading"
@@ -155,64 +152,24 @@ export default function Home() {
       <section
         id="beyond"
         aria-labelledby="beyond-heading"
-        className="border-t border-[var(--border)] bg-[var(--pale)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
+        className="border-t border-[var(--border)] bg-[var(--light)] py-16 sm:py-24 -mx-6 px-6 md:-mx-10 md:px-10"
       >
         <SectionHeading id="beyond-heading" title="Beyond Research" />
-        <div className="max-w-3xl space-y-14">
-          <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
-              Leadership & Community
-            </h3>
-            <div className="mt-6 space-y-6">
-              {leadership.map((item) => (
-                <article key={item.title}>
-                  <h4 className="text-[16px] font-semibold text-[var(--foreground)]">
-                    {item.title}
-                  </h4>
-                  <p className="mt-2 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
-                    {item.description}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
-              Teaching
-            </h3>
-            <div className="mt-4 space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
-              {teaching.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
-              Current Explorations
-            </h3>
-            <ul className="mt-5 flex flex-wrap gap-2">
-              {currentExplorations.map((item) => (
-                <li
-                  key={item}
-                  className="border border-[var(--border)] bg-white px-3 py-1.5 text-[13px] text-[var(--muted)]"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold tracking-tight text-[var(--heading)]">
-              Outside Work
-            </h3>
-            <div className="mt-4 space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
-              {outsideWork.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+        <div className="max-w-3xl">
+          <h3 className="text-xl font-medium tracking-tight text-[var(--heading)]">
+            Community
+          </h3>
+          <div className="mt-6 space-y-5">
+            {community.map((item) => (
+              <article key={item.title}>
+                <h4 className="text-[16px] font-semibold text-[var(--foreground)]">
+                  {item.title}
+                </h4>
+                <p className="mt-1 text-[15px] leading-7 text-[var(--muted)]">
+                  {item.description}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -227,7 +184,7 @@ export default function Home() {
           <p>{contact.copy}</p>
           <p>{contact.followUp}</p>
         </div>
-        <div className="mt-8 max-w-3xl border border-[var(--border)] bg-[var(--pale)] p-6 sm:p-8">
+        <div className="mt-8 max-w-3xl border border-[var(--border)] bg-[var(--light)] p-6 sm:p-8">
           <p className="text-[15px] text-[var(--foreground)]">
             <span className="font-medium">Location:</span> {siteConfig.location}
           </p>

@@ -1,6 +1,5 @@
 import type {
   Award,
-  BeyondItem,
   Education,
   NavItem,
   Project,
@@ -64,32 +63,32 @@ export const researchInterests: ResearchInterest[] = [
   {
     title: "Culturally Grounded AI Evaluation",
     description:
-      "I study how AI systems can be evaluated in ways that account for cultural behaviours, languages, identities, and social practices. My interest is in moving evaluation beyond aggregate accuracy toward benchmarks that better represent communities often absent from mainstream datasets.",
+      "How AI systems can be evaluated in ways that account for cultural behaviours, languages, identities, and social practices often missing from mainstream benchmarks.",
   },
   {
     title: "Multimodal Deepfake Detection",
     description:
-      "I work on systems that identify manipulated content across image, video, and audio. I am especially interested in multimodal fusion, cross-dataset robustness, and media-integrity tools that remain useful outside controlled laboratory settings.",
+      "Building and evaluating systems that identify manipulated content across image, video, and audio — with attention to robustness beyond laboratory settings.",
   },
   {
     title: "AI Safety for Underrepresented Regions",
     description:
-      "I examine how the risks and benefits of AI differ across geographic, cultural, and socioeconomic contexts. This includes synthetic media, misinformation, representation, low-resource languages, and evaluation frameworks that remain meaningful beyond the Global North.",
+      "Studying how the risks and benefits of AI differ across geographic, cultural, and socioeconomic contexts, including synthetic media and low-resource languages.",
   },
   {
     title: "Model Generalisation and Fairness",
     description:
-      "I am interested in how models behave when the data distribution, demographics, or deployment environment change. My work asks when strong benchmark performance fails to transfer, and what fairness means under those conditions.",
+      "Examining when strong benchmark performance fails to transfer across demographics, data distributions, and real-world deployment environments.",
   },
   {
     title: "Large Language Model Evaluation",
     description:
-      "I use large language models for structured evaluation, research tooling, and analysis of multimodal content. I care about factuality, hallucination, transparency, and making LLM-assisted pipelines more reproducible.",
+      "Using LLMs for structured evaluation and research tooling, with a focus on factuality, hallucination, and reproducible assessment pipelines.",
   },
   {
     title: "Reliable AI Systems and Infrastructure",
     description:
-      "My engineering experience has made me attentive to the gap between a model that works in a notebook and a system that continues to work under real constraints. I am interested in data pipelines, observability, deployment, and the infrastructure that keeps machine learning systems dependable.",
+      "Bridging the gap between models that work in notebooks and systems that remain dependable under production constraints.",
   },
 ];
 
@@ -322,45 +321,15 @@ export const writing: WritingEntry[] = [
   },
 ];
 
-export const leadership: BeyondItem[] = [
+export const community = [
   {
-    title: "Women in Tech Global Mentorship",
-    description:
-      "Mentoring and supporting women interested in technology, professional growth, and navigating technical careers.",
+    title: "Cohere",
+    description: "Community member.",
   },
   {
-    title: "Humans of GIKI",
-    description:
-      "Helped organise and document more than 165 student stories for an audience of over 800 people, strengthening an interest in storytelling, identity, and community.",
+    title: "Women in Tech",
+    description: "Community member.",
   },
-  {
-    title: "Student Leadership — GIKI",
-    description:
-      "Led a thirty-member marketing team across six internal events, coordinating planning, communication, and execution.",
-  },
-];
-
-export const teaching = {
-  paragraphs: [
-    "I have several years of experience helping students strengthen their English communication and prepare for exams including IELTS, TOEFL, and GRE.",
-    "Teaching has shaped how I communicate technical ideas: understanding something deeply also means being able to explain it clearly.",
-  ],
-};
-
-export const currentExplorations = [
-  "AI Safety and Governance",
-  "Forward-Deployed Engineering",
-  "System Design",
-  "Distributed Systems",
-  "LLM Infrastructure",
-  "Accessibility Technology",
-  "Research Communication",
-  "Public Speaking",
-];
-
-export const outsideWork = [
-  "Beyond research and engineering, I enjoy reading, writing personal essays, photography, teaching, collecting postcards, travelling, and finding connections between technology, culture, and everyday life.",
-  "I am also building a postcard business centred on memory, art, storytelling, and the joy of receiving something tangible in an increasingly digital world.",
 ];
 
 export const contact = {

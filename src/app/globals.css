@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 :root {
+  /* PMS 2706 / PMS 2716 inspired palette */
+  --pms-2706: #ced5eb;
+  --pms-2716: #a0a8d7;
   --background: #ffffff;
-  --background-alt: #fcfaff;
-  --pale: #f6f0ff;
-  --light: #ede1fa;
-  --border: #ded0ec;
-  --accent: #6d28d9;
-  --heading: #4c1d95;
-  --foreground: #201726;
-  --muted: #6b6370;
+  --background-alt: #f7f8fc;
+  --pale: #ced5eb;
+  --light: #e8ecf6;
+  --border: #c5cbe3;
+  --accent: #7b84c4;
+  --heading: #4a5280;
+  --foreground: #1e2233;
+  --muted: #5c6478;
 }
 
 @theme inline {
@@ -79,6 +82,6 @@ section[id] {
 }
 
 .author-emphasis {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--heading);
 }
