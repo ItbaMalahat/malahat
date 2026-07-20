@@ -1,233 +1,309 @@
+import { AwardEntry } from "@/components/award-entry";
+import { Hero } from "@/components/hero";
+import { ProjectEntry } from "@/components/project-entry";
+import { PublicationEntry } from "@/components/publication-entry";
+import { ResearchInterest } from "@/components/research-interest";
+import { SectionHeading } from "@/components/section-heading";
+import { SocialLinks } from "@/components/social-links";
+import { TimelineEntry } from "@/components/timeline-entry";
+import { WritingEntry } from "@/components/writing-entry";
+import {
+  about,
+  awards,
+  contact,
+  currentExplorations,
+  currentResearch,
+  education,
+  experience,
+  leadership,
+  outsideWork,
+  projects,
+  publications,
+  researchInterests,
+  siteConfig,
+  socialLinks,
+  teaching,
+  writing,
+  writingIntro,
+} from "@/data/portfolio";
+
 export default function Home() {
-  const projects = [
-    {
-      title: "Responsible AI for Public Services",
-      description:
-        "A concept platform for evaluating fairness, accessibility, and transparency in AI systems used by civic and social programs.",
+  const publicationsByYear = publications.reduce<Record<string, typeof publications>>(
+    (groups, publication) => {
+      const key = publication.isThesis
+        ? "Undergraduate Thesis"
+        : publication.year;
+      groups[key] = groups[key] ?? [];
+      groups[key].push(publication);
+      return groups;
     },
-    {
-      title: "Low-Cost AI Learning Labs",
-      description:
-        "An initiative focused on practical, affordable AI education resources for students and builders in low-income countries.",
-    },
-    {
-      title: "Open Ethics Research Toolkit",
-      description:
-        "A research-driven toolkit for documenting model risks, community impact, and accountability practices in applied AI work.",
-    },
-  ];
-
-  const workExperience = [
-    {
-      role: "Ethical AI Researcher",
-      period: "2023 - Present",
-      summary:
-        "Researching practical, people-centered AI with an emphasis on fairness, inclusion, and responsible deployment in underserved communities.",
-    },
-    {
-      role: "AI Collaboration Partner",
-      period: "2021 - 2023",
-      summary:
-        "Worked across interdisciplinary teams to shape research ideas, prototype solutions, and translate technical work into real-world impact.",
-    },
-  ];
-
-  const publications = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  ];
-
-  const conferences = [
-    "Ethics in AI Summit",
-    "Global Research for Inclusive Technology Forum",
-    "Open Collaboration in Emerging Tech Conference",
-  ];
-
-  const openSource = [
-    "Contributing to open documentation, research tooling, and accessible AI learning resources.",
-    "Supporting transparent development practices and community-first problem solving.",
-  ];
+    {},
+  );
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#f7f0ff,_#efe1ff_45%,_#e4d2ff_100%)] px-6 py-10 text-slate-900">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-        <section className="overflow-hidden rounded-[2rem] border border-white/50 bg-white/60 p-8 shadow-[0_20px_60px_rgba(119,83,181,0.15)] backdrop-blur md:p-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-violet-700">
-            malahat.vercel.com
+    <main id="main" className="mx-auto w-full max-w-6xl px-6 pb-20 md:px-10">
+      <Hero />
+
+      <section id="about" aria-labelledby="about-heading" className="py-16 sm:py-24">
+        <SectionHeading id="about-heading" title="About" />
+        <div className="max-w-[46rem] space-y-5 text-[16px] leading-8 text-[var(--muted)] sm:text-[17px]">
+          {about.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="research"
+        aria-labelledby="research-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading
+          id="research-heading"
+          title="Research Interests"
+          description="Areas where my research and engineering practice meet questions of culture, reliability, and real-world deployment."
+        />
+        <div className="grid gap-x-12 md:grid-cols-2">
+          {researchInterests.map((interest) => (
+            <ResearchInterest key={interest.title} {...interest} />
+          ))}
+        </div>
+
+        <div className="mt-16 border border-[var(--border)] bg-[var(--accent-soft)] p-6 sm:p-8">
+          <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
+            Current Research
           </p>
-          <div className="mt-6 grid gap-8 md:grid-cols-[1.4fr_0.9fr] md:items-end">
-            <div className="space-y-5">
-              <h1 className="text-4xl font-semibold tracking-tight text-violet-950 md:text-6xl">
-                Malahat
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-700">
-                Ethical AI researcher passionate about building responsible,
-                human-centered technology for low-income countries and open to
-                thoughtful collaborations that create meaningful impact.
-              </p>
-            </div>
-            <div className="rounded-[1.5rem] bg-violet-950 p-6 text-violet-100 shadow-lg">
-              <p className="text-sm uppercase tracking-[0.2em] text-violet-300">
-                Mission
-              </p>
-              <p className="mt-3 text-base leading-7">
-                I aim to create ethical, accessible AI systems that support
-                equity, opportunity, and sustainable progress for underserved
-                communities around the world.
-              </p>
-            </div>
-          </div>
-        </section>
+          <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
+            {currentResearch.title}
+          </h3>
+          <p className="mt-3 text-[14px] text-[var(--muted)]">
+            {currentResearch.role} · {currentResearch.location}
+            <span className="mx-2 text-[var(--border)]">|</span>
+            {currentResearch.period}
+          </p>
+          <p className="mt-5 max-w-3xl text-[16px] leading-8 text-[var(--muted)]">
+            {currentResearch.description}
+          </p>
+          <blockquote className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-[16px] leading-8 text-[var(--foreground)]">
+            {currentResearch.researchQuestion}
+          </blockquote>
+        </div>
+      </section>
 
-        <section className="grid gap-6 md:grid-cols-2">
-          <article className="rounded-[2rem] border border-white/50 bg-[#fbf7ff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">About</h2>
-            <p className="mt-4 leading-8 text-slate-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur.
-            </p>
-          </article>
-
-          <article className="rounded-[2rem] border border-white/50 bg-[#f6efff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Collaboration
-            </h2>
-            <p className="mt-4 leading-8 text-slate-700">
-              I am always open to collaborating with researchers, public
-              interest technologists, mission-driven startups, educators,
-              nonprofit teams, and builders working toward more just and
-              inclusive digital futures.
-            </p>
-          </article>
-        </section>
-
-        <section className="rounded-[2rem] border border-white/50 bg-white/65 p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-          <h2 className="text-2xl font-semibold text-violet-950">Projects</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {projects.map((project) => (
-              <article
-                key={project.title}
-                className="rounded-[1.5rem] border border-violet-100 bg-[#faf5ff] p-5"
-              >
-                <h3 className="text-lg font-semibold text-violet-900">
-                  {project.title}
+      <section
+        id="publications"
+        aria-labelledby="publications-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading id="publications-heading" title="Publications" />
+        <div className="space-y-10">
+          {Object.entries(publicationsByYear).map(([group, entries]) => (
+            <div key={group}>
+              {!entries[0]?.isThesis ? (
+                <h3 className="mb-2 text-[13px] font-medium uppercase tracking-[0.14em] text-[var(--muted)]">
+                  {group}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  {project.description}
-                </p>
-              </article>
+              ) : null}
+              {entries.map((publication) => (
+                <PublicationEntry key={publication.title} {...publication} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="projects"
+        aria-labelledby="projects-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading
+          id="projects-heading"
+          title="Projects"
+          description="Selected research systems, public-interest concepts, and production engineering work."
+        />
+        <div>
+          {projects.map((project) => (
+            <ProjectEntry key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="experience"
+        aria-labelledby="experience-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading id="experience-heading" title="Experience" />
+        <div>
+          {experience.map((item) => (
+            <TimelineEntry
+              key={`${item.role}-${item.organisation}-${item.period}`}
+              {...item}
+            />
+          ))}
+        </div>
+
+        <div className="mt-14 border-t border-[var(--border)] pt-14">
+          <h3 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-[var(--foreground)] sm:text-3xl">
+            Education
+          </h3>
+          <article className="mt-6 max-w-3xl">
+            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-[var(--accent)]">
+              {education.dates}
+            </p>
+            <h4 className="mt-3 text-xl font-semibold text-[var(--foreground)]">
+              {education.degree}
+            </h4>
+            <p className="mt-1 text-[16px] text-[var(--muted)]">
+              {education.institution}
+            </p>
+            {education.thesis ? (
+              <p className="mt-4 text-[15px] leading-7 text-[var(--muted)]">
+                <span className="font-medium text-[var(--foreground)]">
+                  Thesis:
+                </span>{" "}
+                {education.thesis}
+              </p>
+            ) : null}
+            {education.description ? (
+              <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">
+                {education.description}
+              </p>
+            ) : null}
+          </article>
+        </div>
+      </section>
+
+      {awards.length > 0 ? (
+        <section
+          id="awards"
+          aria-labelledby="awards-heading"
+          className="border-t border-[var(--border)] py-16 sm:py-24"
+        >
+          <SectionHeading id="awards-heading" title="Awards" />
+          <div>
+            {awards.map((award) => (
+              <AwardEntry key={award.title} {...award} />
             ))}
           </div>
         </section>
+      ) : null}
 
-        <section className="grid gap-6 lg:grid-cols-2">
-          <article className="rounded-[2rem] border border-white/50 bg-[#faf6ff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Work Experience
-            </h2>
-            <div className="mt-6 space-y-5">
-              {workExperience.map((item) => (
-                <div
-                  key={`${item.role}-${item.period}`}
-                  className="rounded-[1.25rem] border border-violet-100 bg-white/80 p-5"
-                >
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-semibold text-violet-900">
-                      {item.role}
-                    </h3>
-                    <p className="text-sm font-medium text-violet-700">
-                      {item.period}
-                    </p>
-                  </div>
-                  <p className="mt-3 leading-7 text-slate-700">
-                    {item.summary}
+      <section
+        id="writing"
+        aria-labelledby="writing-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading id="writing-heading" title="Writing" />
+        <div className="mb-10 max-w-[46rem] space-y-4 text-[16px] leading-8 text-[var(--muted)]">
+          {writingIntro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        <div>
+          {writing.map((entry) => (
+            <WritingEntry key={entry.title} {...entry} />
+          ))}
+        </div>
+        {socialLinks.medium ? (
+          <p className="mt-8">
+            <a
+              href={socialLinks.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[15px] font-medium text-[var(--accent)] underline-offset-4 hover:underline"
+            >
+              Read more on Medium
+              <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+        ) : null}
+      </section>
+
+      <section
+        id="beyond"
+        aria-labelledby="beyond-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading id="beyond-heading" title="Beyond Research" />
+
+        <div className="space-y-14">
+          <div>
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+              Leadership and Community
+            </h3>
+            <div className="mt-6 space-y-6">
+              {leadership.map((item) => (
+                <article key={item.title} className="max-w-3xl">
+                  <h4 className="text-[16px] font-semibold text-[var(--foreground)]">
+                    {item.title}
+                  </h4>
+                  <p className="mt-2 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+                    {item.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
-          </article>
+          </div>
 
-          <article className="rounded-[2rem] border border-white/50 bg-[#f3ebff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Publications
-            </h2>
-            <div className="mt-6 space-y-4">
-              {publications.map((publication, index) => (
-                <p
-                  key={publication}
-                  className="rounded-[1.25rem] border border-violet-100 bg-white/70 p-5 leading-7 text-slate-700"
-                >
-                  <span className="font-semibold text-violet-800">
-                    Paper {index + 1}.
-                  </span>{" "}
-                  {publication}
-                </p>
+          <div>
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+              Teaching
+            </h3>
+            <div className="mt-4 max-w-[46rem] space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+              {teaching.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-          </article>
-        </section>
+          </div>
 
-        <section className="grid gap-6 md:grid-cols-3">
-          <article className="rounded-[2rem] border border-white/50 bg-white/65 p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Conferences
-            </h2>
-            <ul className="mt-5 space-y-3 text-slate-700">
-              {conferences.map((conference) => (
-                <li
-                  key={conference}
-                  className="rounded-xl bg-[#faf5ff] px-4 py-3 leading-7"
-                >
-                  {conference}
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="rounded-[2rem] border border-white/50 bg-[#fbf7ff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Open Source Work
-            </h2>
-            <ul className="mt-5 space-y-3 text-slate-700">
-              {openSource.map((item) => (
+          <div>
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+              Current Explorations
+            </h3>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {currentExplorations.map((item) => (
                 <li
                   key={item}
-                  className="rounded-xl bg-white/80 px-4 py-3 leading-7"
+                  className="border border-[var(--border)] bg-white/60 px-3 py-1.5 text-[13px] text-[var(--muted)]"
                 >
                   {item}
                 </li>
               ))}
             </ul>
-          </article>
+          </div>
 
-          <article className="rounded-[2rem] border border-white/50 bg-[#f4ecff] p-8 shadow-[0_12px_40px_rgba(145,118,196,0.12)]">
-            <h2 className="text-2xl font-semibold text-violet-950">
-              Contact Details
-            </h2>
-            <div className="mt-5 space-y-4 text-slate-700">
-              <p>
-                <span className="font-semibold text-violet-900">Email:</span>{" "}
-                malahat.research@example.com
-              </p>
-              <p>
-                <span className="font-semibold text-violet-900">Location:</span>{" "}
-                Available for remote and international collaborations
-              </p>
-              <p>
-                <span className="font-semibold text-violet-900">
-                  Focus Areas:
-                </span>{" "}
-                ethical AI, accessibility, public-interest technology, and
-                low-cost innovation
-              </p>
+          <div>
+            <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+              Outside Work
+            </h3>
+            <div className="mt-4 max-w-[46rem] space-y-4 text-[15px] leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+              {outsideWork.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
-          </article>
-        </section>
-      </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        aria-labelledby="contact-heading"
+        className="border-t border-[var(--border)] py-16 sm:py-24"
+      >
+        <SectionHeading id="contact-heading" title={contact.heading} />
+        <div className="max-w-[46rem] space-y-5 text-[16px] leading-8 text-[var(--muted)]">
+          <p>{contact.copy}</p>
+          <p>{contact.followUp}</p>
+        </div>
+        <div className="mt-8 border border-[var(--border)] bg-[var(--accent-soft)] p-6 sm:p-8">
+          <p className="text-[15px] text-[var(--foreground)]">
+            <span className="font-medium">Location:</span> {siteConfig.location}
+          </p>
+          <SocialLinks className="mt-5" />
+        </div>
+      </section>
     </main>
   );
 }

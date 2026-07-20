@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Source_Serif_4 } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { siteConfig } from "@/data/portfolio";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,15 +10,49 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSerif = Source_Serif_4({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Malahat | Ethical AI Researcher",
-  description:
-    "Portfolio for Malahat, an ethical AI researcher focused on responsible technology, low-income countries, and open collaboration.",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  openGraph: {
+    title: siteConfig.ogTitle,
+    description: siteConfig.ogDescription,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: siteConfig.ogTitle,
+    description: siteConfig.ogDescription,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: "AI Researcher and Engineer",
+  knowsAbout: [
+    "Trustworthy AI",
+    "AI Safety",
+    "Deepfake Detection",
+    "Multimodal Learning",
+    "Computer Vision",
+    "AI Systems",
+    "Data Engineering",
+  ],
+  // TODO: Add verified social profile URLs to sameAs
 };
 
 export default function RootLayout({
@@ -26,9 +63,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${sourceSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        className="min-h-full bg-[var(--background)] font-[family-name:var(--font-geist-sans)] text-[var(--foreground)]"
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
