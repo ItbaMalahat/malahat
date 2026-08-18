@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Source_Serif_4 } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteRail } from "@/components/site-rail";
 import { siteConfig, socialLinks } from "@/data/portfolio";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fraunces = Fraunces({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-display",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -37,12 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
-const sameAs = [
-  socialLinks.linkedin,
-  socialLinks.github,
-  socialLinks.medium,
-  socialLinks.googleScholar,
-].filter(Boolean);
+const sameAs = [socialLinks.linkedin, socialLinks.github, socialLinks.medium].filter(
+  Boolean,
+);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -50,8 +55,7 @@ const jsonLd = {
   name: siteConfig.name,
   url: siteConfig.url,
   email: socialLinks.email || undefined,
-  telephone: socialLinks.phone ? socialLinks.phone.replace(/\s+/g, "-") : undefined,
-  jobTitle: "AI Researcher and Engineer",
+  jobTitle: "Trustworthy AI Researcher & Machine Learning Engineer",
   sameAs,
   knowsAbout: [
     "Trustworthy AI",
@@ -59,7 +63,8 @@ const jsonLd = {
     "Deepfake Detection",
     "Multimodal Learning",
     "Computer Vision",
-    "AI Systems",
+    "AI Governance",
+    "Agentic AI",
     "Data Engineering",
   ],
 };
@@ -72,16 +77,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${sourceSerif.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-full bg-white font-[family-name:var(--font-geist-sans)] text-[var(--foreground)]">
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <div className="container">
+          <SiteRail />
+          <main id="main">
+            {children}
+            <SiteFooter />
+          </main>
+        </div>
       </body>
     </html>
   );
