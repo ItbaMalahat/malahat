@@ -35,7 +35,6 @@
   --accent-on-deep: #e3a26e; /* warm amber — links on the deep band */
   --tag-bg: #f1e8d6; /* Warm Sand — chip background */
   --tag-border: #d8c39c; /* tan — chip border */
-  --pending: #b8ad98; /* muted warm grey — disabled/pending state */
   --safety: #6e8f76; /* muted sage-forest — sparing "trust & safety" accent */
   --safety-bg: #e8eee3;
   --safety-border: #c7d6be;
@@ -314,7 +313,8 @@ h1 + p.lede {
 }
 
 h2 + p,
-h2 + .entry {
+h2 + .entry,
+h2 + .deep-band {
   margin-top: 0;
 }
 
@@ -372,6 +372,12 @@ p {
 ul {
   margin: var(--sp-3) 0;
   padding-left: var(--sp-4);
+  list-style: disc outside;
+}
+
+ul::marker,
+li::marker {
+  color: var(--accent-soft);
 }
 
 li + li {
@@ -417,6 +423,11 @@ strong {
   margin-bottom: var(--sp-1);
 }
 
+.mentorship-card > .date-text:first-child {
+  margin-top: 0;
+  margin-bottom: var(--sp-1);
+}
+
 .tags-label {
   color: var(--heading);
   font-weight: 600;
@@ -439,15 +450,6 @@ strong {
 
 .link-sep {
   color: var(--muted);
-}
-
-.link-pending {
-  color: var(--pending);
-  cursor: default;
-}
-
-.link-pending-note {
-  font-size: 0.8em;
 }
 
 .entry {
@@ -720,6 +722,31 @@ strong {
 .deep-band h2 {
   color: var(--muted-on-deep);
   border-bottom-color: rgba(185, 206, 197, 0.25);
+}
+
+.deep-band h3 {
+  color: var(--ink-on-deep);
+}
+
+.quiet-link {
+  margin: var(--sp-5) 0 0;
+  text-align: center;
+}
+
+.quiet-link a {
+  color: var(--muted);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border);
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.quiet-link a:hover {
+  opacity: 1;
+  color: var(--accent);
 }
 
 .deep-band .content-text,

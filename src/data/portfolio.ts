@@ -5,6 +5,7 @@ import type {
   EducationEntry,
   ExperienceEntry,
   LeadershipRole,
+  MentorshipOption,
   NavItem,
   NewsItem,
   ParagraphSegment,
@@ -15,6 +16,7 @@ import type {
   SelectedWorkItem,
   SocialLinks,
   Bio,
+  Talk,
 } from "@/types/portfolio";
 
 export const siteConfig = {
@@ -43,8 +45,7 @@ export const socialLinks: SocialLinks = {
   github: "https://github.com/ItbaMalahat",
   mediumLabel: "medium.com/@itbamalahat",
   medium: "https://medium.com/@itbamalahat",
-  // TODO: Add the final CV file URL during implementation.
-  cv: "",
+  cv: "https://drive.google.com/file/d/1Lnq_wMIHqUaSA8u5iACIIkXJSXYzYu3N/view?usp=sharing",
   location: "Pakistan",
 };
 
@@ -62,7 +63,7 @@ export const navigation: NavItem[] = [
   { label: "News", href: "/news" },
   { label: "Articles", href: "/articles" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Mentorship", href: "/mentorship" },
 ];
 
 export function getNavigationItems() {
@@ -77,7 +78,7 @@ export const homeIntro = {
   greeting: "Hi, I'm Itba Malahat.",
   paragraphs: [
     [
-      "I am a machine learning engineer and Research Assistant at the HCI Lab of the University of Colombo School of Computing, supervised by Dr. Dilrukshi Gamage on deepfake detection, trustworthy AI, and media literacy for the Global South. I am part of the core team of the ",
+      "I'm a machine learning engineer and Research Assistant at the HCI Lab, University of Colombo School of Computing, working with Dr. Dilrukshi Gamage on deepfake detection, trustworthy AI, and media literacy for the Global South. I'm also part of the core team on the ",
       {
         text: "HCI Deepfake Detection for South Asia",
         href: "https://sites.google.com/view/south-asia-deepfake-detection/team",
@@ -85,20 +86,17 @@ export const homeIntro = {
       " initiative.",
     ],
     [
-      "I earned my bachelor's degree in Computer Science from the Ghulam Ishaq Khan Institute of Engineering Sciences and Technology (GIKI), and I am currently pursuing an MS in Computer Science at LUMS.",
+      "I did my bachelor's in Computer Science at GIKI (Ghulam Ishaq Khan Institute of Engineering Sciences and Technology), and I'm now pursuing an MS in Computer Science at LUMS.",
     ],
     [
-      "My work lies at the intersection of AI safety, trustworthy multimodal learning, computer vision, and the data infrastructure needed to evaluate intelligent systems. I am especially interested in how AI behaves across cultural and distributional shifts, how intelligent agents can learn from experience without compromising reliability, and how research can translate into meaningful public protection.",
-    ],
-    [
-      "As a South Asian woman and technologist, I care deeply about making digital spaces safer for women and communities that are often overlooked by mainstream AI research. I want my work to connect technical detection, culturally grounded evaluation, media literacy, and responsible AI governance.",
+      "I like to learn and solve problems.",
     ],
   ] as ParagraphSegment[][],
   buttons: [
     { label: "View Research", href: "/research" },
     { label: "Read Publications", href: "/publications" },
     { label: "Download CV", href: "/about#cv" },
-    { label: "Start a Conversation", href: "/contact" },
+    { label: "Start a Conversation", href: "/about#contact" },
   ],
 };
 
@@ -147,7 +145,7 @@ export const researchProjects: ResearchProject[] = [
     title: "Deepfake Detection in South Asia",
     tags: ["Trustworthy AI", "Deepfake Detection", "Machine Learning", "South Asia"],
     body: [
-      "Working with Dr. Dilrukshi Gamage, Dr. Savindhu Herath, and Yash Raj on a region-wide study of deepfake detection in South Asia. The work examines the methods, datasets, modalities, and evaluation practices represented in the literature, with particular attention to regional languages, identities, media practices, and underrepresented populations.",
+      "Working with Dr. Dilrukshi Gamage, Dr. Savindhu Herath, and Prof. Yash Raj Shrestha on a region-wide study of deepfake detection in South Asia. The work examines the methods, datasets, modalities, and evaluation practices represented in the literature, with particular attention to regional languages, identities, media practices, and underrepresented populations.",
     ],
     meta: "Period: November 2025–Present",
   },
@@ -168,7 +166,7 @@ export const researchProjects: ResearchProject[] = [
       "Synthesising evidence from more than 70 peer-reviewed studies to understand how mammogram preprocessing affects downstream breast-cancer detection. The work maps common enhancement, denoising, segmentation, and normalisation techniques while identifying gaps in adaptive and clinically robust preprocessing pipelines.",
     ],
     supervisors: "Supervised by Dr. Omer Bin Saeed and Dr. Shahab Uddin Ansari.",
-    statusNote: "Status: Manuscript in preparation",
+    statusNote: "Status: Manuscript in writeup stage",
   },
   {
     status: "Completed",
@@ -179,6 +177,12 @@ export const researchProjects: ResearchProject[] = [
       "The system was trained and evaluated on 12 benchmark datasets containing more than 5,000 samples, with specialised pipelines for GAN-generated and diffusion-generated media. This project formed my undergraduate thesis at GIKI under the supervision of Dr. Khurram Khan Jadoon.",
     ],
     meta: "Period: February 2024–May 2025",
+    links: [
+      {
+        label: "Thesis document",
+        url: "https://drive.google.com/file/d/1B9g9iQszLh3jlGcQya_MULJAi_yxq2FW/view?usp=sharing",
+      },
+    ],
   },
   {
     status: "Completed",
@@ -187,7 +191,7 @@ export const researchProjects: ResearchProject[] = [
     body: [
       "Examined why developing countries are particularly vulnerable to the political and social harms of deepfakes. The study considers disinformation, electoral interference, reputational harm, fraud, legal gaps, and declining trust in media, and argues for a response that combines technical detection, public awareness, governance, and interdisciplinary collaboration.",
     ],
-    meta: "Published: 23 September 2024",
+    meta: "Published: 23 September 2024 · Cited 100+ times",
     links: [
       {
         label: "View preprint",
@@ -237,6 +241,23 @@ export const publications: Publication[] = [
       "Mammogram Preprocessing for Breast-Cancer Detection: Methods, Evidence, and Research Gaps",
     description:
       "A structured review of more than 70 studies examining preprocessing strategies and their implications for robust medical-image analysis.",
+  },
+  {
+    section: "In preparation",
+    kind: "Survey",
+    title: "Deepfake Detection in South Asia",
+    authors: "Itba Malahat, Dr. Dilrukshi Gamage, Dr. Savindhu Herath, and Prof. Yash Raj Shrestha",
+    description:
+      "A region-wide study of deepfake-detection methods, datasets, modalities, and evaluation practices, with particular attention to South Asian languages, identities, and underrepresented populations. In its final stages of write-up ahead of submission to ACM.",
+  },
+  {
+    section: "In preparation",
+    kind: "Mixed-methods study",
+    title: "From Reddit to Telegram: Deepfake Discourse in Fragmented Public Channels",
+    authors:
+      "Itba Malahat, Dr. Subhayan Mukherjee, Dr. Dilrukshi Gamage, and the Data4Transparency (D4T) community",
+    description:
+      "A computational and qualitative study of how deepfake-related discourse changes as it moves from Reddit into public Telegram channels. Targeted for submission to ICWSM.",
   },
 ];
 
@@ -339,7 +360,7 @@ export const education: EducationEntry[] = [
     institution:
       "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology — GIKI",
     degree: "BS in Computer Science",
-    period: "September 2021–July 2025",
+    period: "September 2021–June 2025",
     location: "Swabi, Pakistan",
     thesis: "Audio-Visual Integrity Analyzer for Multimodal Deepfake Detection",
     advisor: "Dr. Khurram Khan Jadoon",
@@ -388,8 +409,14 @@ export const projects: ProjectEntry[] = [
       "Designed and developed a multimodal deepfake-detection framework integrating ConvNeXt for image forensics, GenConViT for video analysis, and a CNN–BiLSTM architecture for synthetic-speech detection. The system provides one verification workflow across images, videos, and audio.",
       "Trained and evaluated the framework on 12 benchmark datasets containing more than 5,000 samples. Built specialised pipelines to distinguish authentic content from GAN-generated and diffusion-generated media and to evaluate robustness across modalities.",
     ],
-    // TODO: Add source code and thesis/demo links during implementation.
-    links: [{ label: "Source code" }, { label: "Thesis / demo" }],
+    // TODO: Add source code link during implementation.
+    links: [
+      { label: "Source code" },
+      {
+        label: "Thesis document",
+        url: "https://drive.google.com/file/d/1B9g9iQszLh3jlGcQya_MULJAi_yxq2FW/view?usp=sharing",
+      },
+    ],
   },
   {
     title: "Smart Attendance System with Multi-Face Recognition",
@@ -570,8 +597,7 @@ export const communityService: CommunityService[] = [
       },
     ],
     bullets: [
-      "Made mental-health education more accessible and created a safe space for young people in Peshawar to discuss wellbeing, stress, and emotional health.",
-      "Led awareness campaigns to reduce stigma and encourage early conversations around mental health.",
+      "Introduced research-backed approaches to mental-health education, tailored for the student population.",
     ],
   },
   {
@@ -602,6 +628,14 @@ export const outreachIntro = {
   intro:
     "I'm interested in bringing technical research into public conversations—particularly around deepfakes, trustworthy AI, digital safety, and the Global South. I'm open to contributing to webinars, university sessions, workshops, panels, and community programmes where my research and technical experience can be useful.",
 };
+
+export const talks: Talk[] = [
+  {
+    title: "Safer Online Spaces for Women in the Age of Generative AI",
+    event: "GatherVerse Women\u2019s AI Summit 2026",
+    date: "14 September 2026",
+  },
+];
 
 export const outreachTopics: PersonBlock[] = [
   {
@@ -648,7 +682,7 @@ export const peopleIntro = {
 export const presentAffiliations: PersonBlock[] = [
   {
     title: "Colombo HCI Lab — University of Colombo School of Computing",
-    body: "I work with Dr. Dilrukshi Gamage at the Colombo HCI Lab on research at the intersection of deepfakes, media literacy, and trustworthy AI in the Global South. In collaboration with Dr. Savindhu Herath and Yash Raj, I contribute to research examining the performance, limitations, and regional relevance of deepfake-detection approaches within South Asian contexts.",
+    body: "I work with Dr. Dilrukshi Gamage at the Colombo HCI Lab on research at the intersection of deepfakes, media literacy, and trustworthy AI in the Global South. In collaboration with Dr. Savindhu Herath and Prof. Yash Raj Shrestha, I contribute to research examining the performance, limitations, and regional relevance of deepfake-detection approaches within South Asian contexts.",
   },
   {
     title: "Deepfake Public Discourse Research",
@@ -670,7 +704,15 @@ export const researchSupervision: PersonBlock[] = [
 export const news: NewsItem[] = [
   {
     date: "August 2026",
-    body: "I began my MS in Computer Science at LUMS.",
+    body: "Our paper, \u201cDeepfake Detection in South Asia,\u201d is in the final stages of write-up ahead of submission to ACM.",
+  },
+  {
+    date: "August 2026",
+    body: "My Master's degree in Computer Science at the Lahore University of Management Sciences (LUMS) was initiated.",
+  },
+  {
+    date: "July 2026",
+    body: "I began working with Dr. Subhayan Mukherjee, Dr. Dilrukshi Gamage, and the Data4Transparency (D4T) community on a mixed-methods study of deepfake discourse across Reddit and public Telegram channels, targeted for submission to ICWSM.",
   },
   {
     date: "June 2026",
@@ -681,24 +723,40 @@ export const news: NewsItem[] = [
     body: "I joined Motive as a Senior Technical Support Engineer.",
   },
   {
+    date: "December 2025",
+    body: "Joined the Colombo HCI Lab as a Research Assistant under Dr. Dilrukshi Gamage, researching deepfake detection and media literacy for the Global South.",
+  },
+  {
     date: "November 2025",
-    body: "I joined the Colombo HCI Lab at the University of Colombo School of Computing as a Research Assistant, working with Dr. Dilrukshi Gamage on deepfake detection and media literacy for the Global South.",
+    body: "Inducted into the core team of the Deeptrace South Asia Deepfake Detection Challenge as Pakistan's representative, researching deepfake detection across South Asia.",
   },
   {
     date: "2025",
     body: "Our paper, \u201cDouble-Layered Authentication Door-Lock System Utilizing Hybrid RFID-PIN Technology for Enhanced Security\u201d, was published in Materials Proceedings.",
   },
   {
+    date: "June 2025",
+    body: "I graduated from GIKI with a Bachelor of Science in Computer Science.",
+  },
+  {
+    date: "May 2025",
+    body: "My mammogram-preprocessing survey — synthesising evidence from more than 70 peer-reviewed studies to understand how preprocessing affects downstream breast-cancer detection — has moved into the manuscript writeup stage, supervised by Dr. Omer Bin Saeed and Dr. Shahab Uddin Ansari.",
+  },
+  {
     date: "April 2025",
     body: "I joined Farmdar as an Automations Engineer, building production data pipelines for agricultural analytics.",
   },
   {
-    date: "February 2025",
+    date: "December 2024",
     body: "I began a structured review of mammogram preprocessing methods for breast-cancer detection under the supervision of Dr. Omer Bin Saeed and Dr. Shahab Uddin Ansari.",
   },
   {
     date: "September 2024",
-    body: "Our preprint, \u201cThe Socio-Political Implications of Deepfakes in Developing Countries\u201d, was posted publicly.",
+    body: "Our preprint, \u201cThe Socio-Political Implications of Deepfakes in Developing Countries\u201d, was posted publicly and has since been cited more than 100 times.",
+  },
+  {
+    date: "September 2024",
+    body: "I concluded my internship at Procter & Gamble, having delivered data-dashboarding systems for Gulf and Pakistani stakeholders with 100% accuracy, automating quarterly fiscal reporting and enabling live connections across multiple databases.",
   },
   {
     date: "July 2024",
@@ -706,7 +764,11 @@ export const news: NewsItem[] = [
   },
   {
     date: "February 2024",
-    body: "I began work on AVIA, my undergraduate thesis and multimodal deepfake-detection framework.",
+    body: "Our team — Itba Malahat, Haya Noor, and Lailoma Noor — began work on AVIA, our undergraduate thesis and multimodal deepfake-detection framework, under the supervision of Dr. Khurram Khan Jadoon.",
+  },
+  {
+    date: "June 2023–August 2023",
+    body: "I completed a paid summer internship in the IT department at the Bank of Khyber, Peshawar.",
   },
 ];
 
@@ -748,18 +810,23 @@ export const articles: ArticleEntry[] = [
 
 export const aboutIntro = {
   paragraphs: [
-    "I am what you get when you combine a computer scientist and a writer: someone who enjoys building systems, studying their consequences, and finding the language that makes complex ideas accessible.",
-    "Professionally, I have worked across machine learning, research, data engineering, automation, and production support. I have built Airflow pipelines for agricultural analytics, enterprise data products for Pakistan and Gulf markets, multimodal deepfake-detection systems, and workflows for investigating production failures in AI-powered platforms.",
-    "My research is centred on trustworthy AI and the Global South. I am interested not only in whether a model performs well, but also in who appears in its data, whose language and identity are missing, how it behaves outside a benchmark, and what happens when the technology enters a real social context.",
-    "That question is especially personal to me as a South Asian woman. Deepfakes and other forms of AI-enabled abuse do not affect everyone equally. My long-term goal is to connect technical research with public awareness, governance, and community action so that digital spaces become safer for women in Pakistan, South Asia, and beyond.",
+    "I'm a computer scientist and writer who enjoys building systems, studying their consequences, and making complex ideas accessible. Professionally, I've worked across machine learning, data engineering, automation, and production support — building Airflow pipelines for agricultural analytics, enterprise data products for Pakistan and Gulf markets, and multimodal deepfake-detection systems.",
+    "My research centres on trustworthy AI and the Global South — not just whether a model performs well, but who appears in its data, what it misses, and what happens when it meets a real social context. As a South Asian woman, that question is personal: my long-term goal is to connect technical research with public awareness and governance to make digital spaces safer for women in Pakistan, South Asia, and beyond.",
   ],
 };
 
-export const researchPhilosophy =
-  "Good AI should do more than achieve a high score. It should remain reliable under change, make its limitations visible, respect the people represented in its data, and be evaluated in the contexts where it will actually be used.";
-
-export const beyondWork =
-  "I love literature, open mics, writing poetry, and conversations that begin with one subject and end somewhere entirely unexpected. If you are working on a difficult idea, an interdisciplinary research question, or a project that uses technology for public good, come have a conversation with me.";
+export const beyondResearchPage = {
+  heading: "Itba, Beyond Research",
+  intro:
+    "A few things about me that don't fit neatly into a CV — my story, in my own words.",
+  story: [
+    "I was born and raised in Peshawar. For as long as I can remember, I've wanted to understand how the world works — physics was my first love.",
+    "A gap year during COVID-19 changed my plans. I couldn't pursue physics the way I'd hoped, so I joined GIKI to study computer science instead. It wasn't the plan, but it gave me a new way to look at the same questions — systems, patterns, and cause and effect, just written in code.",
+    "Along the way, I found purpose as a women's-rights activist, building solutions for communities that technology usually overlooks. That eventually led me into adversarial AI — studying where intelligent systems break, and who gets hurt when they do.",
+    "I love literature, open mics, writing poetry, and conversations that start on one subject and end up somewhere completely different.",
+    "I'm a lover of philosophy, physics, computing, safety, and social action — still figuring out how they all fit together. Mostly, I'm just hoping to leave the world a little better than I found it.",
+  ],
+};
 
 export const currentInterests: string[] = [
   "Trustworthy AI",
@@ -797,17 +864,132 @@ export const bios: Bio[] = [
   },
 ];
 
+export const mentorshipPage = {
+  heading: "Mentorship & Collaboration",
+  intro: [
+    "A space for students, early-career professionals, researchers, and people working on meaningful social-impact problems to connect, learn, and collaborate.",
+    "I offer a limited number of mentorship and collaboration sessions. Choose the conversation that best fits what you're looking for.",
+  ],
+  footerNote:
+    "Mentorship sessions are free. I can't guarantee jobs, admissions, research positions, or publications. I can share what I've learned from my own experiences, help you think through a problem, and hopefully make your next step a little clearer.",
+};
+
+export const mentorshipOptions: MentorshipOption[] = [
+  {
+    number: "01",
+    category: "Mentorship",
+    title: "Early-Career Industry Mentorship",
+    duration: "30 minutes",
+    intro: [
+      "For students, recent graduates, and early-stage professionals navigating careers in software, AI, data, automation, and technology.",
+    ],
+    topicsLabel: "We can talk about:",
+    topics: [
+      "Breaking into industry",
+      "Choosing a career direction",
+      "Moving from university to professional work",
+      "CVs, portfolios, and applications",
+      "Building technical experience",
+      "Navigating your first few roles",
+      "Research vs. industry",
+    ],
+    buttonLabel: "Book Mentorship",
+    calendlyUrl: "https://calendly.com/yourname/industry-mentorship",
+  },
+  {
+    number: "02",
+    category: "Mentorship",
+    title: "Getting Into Research",
+    duration: "30 minutes",
+    intro: [
+      "For students and early-career professionals who want to enter research but aren't sure where to begin.",
+    ],
+    topicsLabel: "We can talk about:",
+    topics: [
+      "Finding an area you're genuinely interested in",
+      "How to start reading research papers",
+      "Finding research gaps",
+      "Turning an interest into a research question",
+      "Approaching professors and researchers",
+      "Finding RA opportunities",
+      "Starting your first research project",
+      "Building toward publications or graduate research",
+    ],
+    buttonLabel: "Start Your Research Journey",
+    calendlyUrl: "https://calendly.com/yourname/research-mentorship",
+  },
+  {
+    number: "03",
+    category: "Mentorship",
+    title: "Research Problem Solving",
+    duration: "45 minutes",
+    intro: [
+      "Already have a problem or research idea?",
+      "Bring it to the session and we'll work through it together: understanding the problem, questioning assumptions, narrowing the scope, identifying relevant evidence, and figuring out what your next step should be.",
+    ],
+    note: "This isn't about giving you the answer. It's about helping you develop a better way to approach the problem.",
+    buttonLabel: "Work Through a Problem",
+    calendlyUrl: "https://calendly.com/yourname/research-problem-solving",
+  },
+  {
+    number: "04",
+    category: "Collaborate",
+    title: "Research Collaboration",
+    duration: "30 minutes",
+    intro: [
+      "For researchers, academics, labs, students, and practitioners interested in exploring potential research collaborations.",
+    ],
+    topicsLabel: "I'm particularly interested in conversations around:",
+    topics: [
+      "Trustworthy & Responsible AI",
+      "AI Safety",
+      "Deepfakes & Synthetic Media",
+      "Multimodal AI",
+      "Online Harms",
+      "AI and the Global South",
+      "Culturally grounded AI evaluation",
+      "Technology and society",
+    ],
+    note: "Have a research question, dataset, study, paper, project, or early-stage idea where our interests overlap? Tell me about it.",
+    buttonLabel: "Explore Research Collaboration",
+    calendlyUrl: "https://calendly.com/yourname/research-collaboration",
+  },
+  {
+    number: "05",
+    category: "Collaborate",
+    title: "Social Impact & Community Collaboration",
+    duration: "30 minutes",
+    intro: [
+      "For NGOs, social workers, activists, educators, student organizations, digital-rights groups, and community initiatives.",
+      "If you're working on a problem where technology or research could help, I'd love to hear about it.",
+    ],
+    topicsLabel: "I may be able to contribute through:",
+    topics: [
+      "Workshops and educational sessions",
+      "AI and digital-safety awareness",
+      "Technical guidance",
+      "Research",
+      "Resource development",
+      "Community initiatives",
+      "Awareness campaigns",
+      "Responsible technology projects",
+    ],
+    note: "Tell me about the people you are trying to help, the problem you're addressing, and where you think I could contribute.",
+    buttonLabel: "Let's Collaborate",
+    calendlyUrl: "https://calendly.com/yourname/social-impact",
+  },
+];
+
 export const contactPage = {
   heading: "Let\u2019s work on something meaningful",
   paragraphs: [
-    "I am open to research collaborations, responsible-AI initiatives, technical speaking opportunities, public-awareness programmes, and engineering work at the intersection of AI, data, and social impact.",
-    "If you are working on trustworthy AI, deepfake detection, multimodal systems, digital rights, or safer online spaces for women, I would love to hear from you.",
+    "I'm always up for research collaborations, responsible-AI work, speaking opportunities, and engineering projects that sit at the intersection of AI, data, and social impact.",
+    "If you're working on trustworthy AI, deepfake detection, multimodal systems, digital rights, or making online spaces safer for women, I'd love to hear from you.",
   ],
   collaborationCta: "For collaborations: itbamalahat [AT] g**** [DOT] com",
   actions: [
     { label: "Email me", href: `mailto:${socialLinks.email}` },
     { label: "Connect on LinkedIn", href: socialLinks.linkedin },
-    { label: "Explore my work on GitHub", href: socialLinks.github },
     { label: "Read my writing on Medium", href: socialLinks.medium },
   ],
 };

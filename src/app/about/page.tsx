@@ -5,17 +5,16 @@ import { SectionLabel } from "@/components/section-label";
 import { Tags } from "@/components/tags";
 import {
   aboutIntro,
-  beyondWork,
   bios,
+  contactPage,
   currentInterests,
   cvSection,
-  researchPhilosophy,
   siteConfig,
   socialLinks,
 } from "@/data/portfolio";
 
 export const metadata: Metadata = {
-  title: `About | ${siteConfig.name}`,
+  title: `About & Contact | ${siteConfig.name}`,
 };
 
 export default function AboutPage() {
@@ -39,33 +38,20 @@ export default function AboutPage() {
         </p>
       ))}
 
-      <SectionLabel title="Research philosophy" />
-      <p className="content-text">{researchPhilosophy}</p>
-
-      <SectionLabel title="Beyond work" />
-      <div className="card-section">
-        <p className="content-text">{beyondWork}</p>
+      <div className="card-section cv-callout" id="cv">
+        <p className="eyebrow">Curriculum Vitae</p>
+        <p className="content-text">{cvSection.description}</p>
+        {socialLinks.cv ? (
+          <p className="link-row">
+            <a className="button-link" href={socialLinks.cv} target="_blank" rel="noopener noreferrer">
+              Download CV <span aria-hidden="true">↗</span>
+            </a>
+          </p>
+        ) : null}
       </div>
 
       <SectionLabel title="Current interests" />
       <Tags tags={currentInterests} variant="pill" />
-
-      <SectionLabel id="cv" title="CV" />
-      <p className="content-text">{cvSection.description}</p>
-      {socialLinks.cv ? (
-        <p className="link-row">
-          <a
-            className="link"
-            href={socialLinks.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download CV <span aria-hidden="true">↗</span>
-          </a>
-        </p>
-      ) : (
-        <p className="date-text">CV link coming soon.</p>
-      )}
 
       <SectionLabel title="Bios" />
       <p className="content-text lede">
@@ -80,6 +66,39 @@ export default function AboutPage() {
           </details>
         ))}
       </div>
+
+      <SectionLabel id="contact" title="Get in touch" />
+      <div className="deep-band">
+        <h3>{contactPage.heading}</h3>
+        {contactPage.paragraphs.map((paragraph, index) => (
+          <p className="content-text" key={index}>
+            {paragraph}
+          </p>
+        ))}
+        <p className="content-text">
+          <strong>{contactPage.collaborationCta}</strong>
+        </p>
+        <p className="date-text">Location: {socialLinks.location}</p>
+
+        <ul className="tag-pills contact-actions">
+          {contactPage.actions.map((action) => (
+            <li key={action.label}>
+              <a
+                className="link"
+                href={action.href}
+                target={action.href.startsWith("http") ? "_blank" : undefined}
+                rel={action.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              >
+                {action.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p className="quiet-link">
+        <a href="/beyond-research">Itba, beyond research →</a>
+      </p>
     </div>
   );
 }

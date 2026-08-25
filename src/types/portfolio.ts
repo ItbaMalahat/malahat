@@ -129,6 +129,27 @@ export type PersonBlock = {
   body: string;
 };
 
+export type Talk = {
+  title: string;
+  event: string;
+  date: string;
+  location?: string;
+  url?: string;
+};
+
+export type MentorshipOption = {
+  number: string;
+  category: "Mentorship" | "Collaborate";
+  title: string;
+  duration: string;
+  intro: string[];
+  topicsLabel?: string;
+  topics?: string[];
+  note?: string;
+  buttonLabel: string;
+  calendlyUrl: string;
+};
+
 export type SelectedWorkItem = {
   title: string;
   description: string;

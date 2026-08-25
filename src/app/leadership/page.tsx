@@ -14,13 +14,6 @@ export default function LeadershipPage() {
     <div className="page">
       <PageHeader title="Leadership" />
 
-      <SectionLabel title="Leadership" />
-      <div>
-        {leadershipRoles.map((role) => (
-          <LeadershipEntry key={role.organisation} {...role} />
-        ))}
-      </div>
-
       <SectionLabel title="Community service" />
       <div>
         {communityService.map((entry) => (
@@ -28,6 +21,13 @@ export default function LeadershipPage() {
             key={(entry.title ?? entry.organisation ?? "") + (entry.period ?? "")}
             {...entry}
           />
+        ))}
+      </div>
+
+      <SectionLabel title="Societies" />
+      <div>
+        {leadershipRoles.map((role) => (
+          <LeadershipEntry key={role.organisation} {...role} />
         ))}
       </div>
     </div>
