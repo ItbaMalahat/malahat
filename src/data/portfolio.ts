@@ -86,7 +86,7 @@ export const homeIntro = {
       " initiative.",
     ],
     [
-      "I did my bachelor's in Computer Science at GIKI (Ghulam Ishaq Khan Institute of Engineering Sciences and Technology), and I'm now pursuing an MS in Computer Science at LUMS.",
+      "I did my bachelor's in Computer Science at GIKI (Ghulam Ishaq Khan Institute of Engineering Sciences and Technology).",
     ],
     [
       "I like to learn and solve problems.",
@@ -348,14 +348,6 @@ export const experience: ExperienceEntry[] = [
 ];
 
 export const education: EducationEntry[] = [
-  {
-    institution: "Lahore University of Management Sciences — LUMS",
-    degree: "MS in Computer Science",
-    period: "August 2026–Present",
-    body: [
-      "Current interests include trustworthy AI, intelligent systems, AI safety, multimodal learning, and data-centric evaluation.",
-    ],
-  },
   {
     institution:
       "Ghulam Ishaq Khan Institute of Engineering Sciences and Technology — GIKI",
@@ -707,10 +699,6 @@ export const news: NewsItem[] = [
     body: "Our paper, \u201cDeepfake Detection in South Asia,\u201d is in the final stages of write-up ahead of submission to ACM.",
   },
   {
-    date: "August 2026",
-    body: "My Master's degree in Computer Science at the Lahore University of Management Sciences (LUMS) was initiated.",
-  },
-  {
     date: "July 2026",
     body: "I began working with Dr. Subhayan Mukherjee, Dr. Dilrukshi Gamage, and the Data4Transparency (D4T) community on a mixed-methods study of deepfake discourse across Reddit and public Telegram channels, targeted for submission to ICWSM.",
   },
@@ -728,7 +716,7 @@ export const news: NewsItem[] = [
   },
   {
     date: "November 2025",
-    body: "Inducted into the core team of the Deeptrace South Asia Deepfake Detection Challenge as Pakistan's representative, researching deepfake detection across South Asia.",
+    body: "Inducted into the core team of Deeptrace: South Asia Deepfake Detection Challenge as Pakistan's representative, researching deepfake detection across South Asia.",
   },
   {
     date: "2025",
@@ -856,11 +844,11 @@ export const bios: Bio[] = [
   },
   {
     label: "100-word bio",
-    body: "Itba Malahat is a machine learning engineer and trustworthy AI researcher from Pakistan. At the Colombo HCI Lab, University of Colombo School of Computing, she works with Dr. Dilrukshi Gamage on deepfake detection, culturally grounded evaluation, and media literacy for the Global South. She earned a BS in Computer Science from GIKI and is pursuing an MS in Computer Science at LUMS. Her experience spans multimodal deepfake detection, production data pipelines, enterprise analytics, AI telematics, and technical support. Her long-term mission is to connect technical research, governance, and public awareness to create safer digital spaces for women in South Asia.",
+    body: "Itba Malahat is a machine learning engineer and trustworthy AI researcher from Pakistan. At the Colombo HCI Lab, University of Colombo School of Computing, she works with Dr. Dilrukshi Gamage on deepfake detection, culturally grounded evaluation, and media literacy for the Global South. She earned a BS in Computer Science from GIKI. Her experience spans multimodal deepfake detection, production data pipelines, enterprise analytics, AI telematics, and technical support. Her long-term mission is to connect technical research, governance, and public awareness to create safer digital spaces for women in South Asia.",
   },
   {
     label: "Speaker introduction",
-    body: "Itba Malahat is a machine learning engineer and trustworthy AI researcher whose work focuses on deepfake detection, multimodal learning, and the Global South. She is a researcher at the Colombo HCI Lab and an MS Computer Science student at LUMS. Through her research and public-interest work, she aims to make digital spaces safer for women in Pakistan and across South Asia.",
+    body: "Itba Malahat is a machine learning engineer and trustworthy AI researcher whose work focuses on deepfake detection, multimodal learning, and the Global South. She is a researcher at the Colombo HCI Lab. Through her research and public-interest work, she aims to make digital spaces safer for women in Pakistan and across South Asia.",
   },
 ];
 
