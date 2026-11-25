@@ -696,7 +696,7 @@ export const researchSupervision: PersonBlock[] = [
 export const news: NewsItem[] = [
   {
     date: "November 2026",
-    body: "Our paper, \u201cAn Empirical Study of Observable Work Allocation Between Developers and Coding Agents in Real World Sessions,\u201d is in the final stages of write-up.",
+    body: "Our paper, \u201cAn Empirical Study of Observable Work Allocation Between Developers and Coding Agents in Real World Sessions,\u201d is in the final stages of write-up, as part of the Software for Good Lab.",
   },
        {
     date: "September 2026",
