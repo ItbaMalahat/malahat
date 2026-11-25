@@ -695,12 +695,23 @@ export const researchSupervision: PersonBlock[] = [
 
 export const news: NewsItem[] = [
   {
+    date: "November 2026",
+    body: "Our paper, \u201cAn Empirical Study of Observable Work Allocation Between Developers and Coding Agents in Real World Sessions,\u201d is in the final stages of write-up.",
+  },
+       {
+    date: "September 2026",
+    body: "I got accepted at Queen Mary University of London in their PhD program starting in January 2027, under the supervision of Dr. Manolis Chiou and Dr. Dimitrios Kollias. My major would be in Human Robotic Teaming",
+  },  {
     date: "August 2026",
-    body: "Our paper, \u201cDeepfake Detection in South Asia,\u201d is in the final stages of write-up ahead of submission to ACM.",
+    body: "I got enrolled in CS 5326: Advanced GenAI and Agents course offered by Dr Agha Ali Raza, and AI-driven Software Engineering offered by Dr Abdul Ali Bangash at Lahore University of Management Sciences",
+  },
+     {
+    date: "24th August 2026",
+    body: "I started a teaching assistantship for AI630: Responsible AI at Lahore University of Management Sciences under the supervision of Dr. Abdul Ali Bangash, supporting a class of 44 second-year master’s students.",
   },
   {
-    date: "July 2026",
-    body: "I began working with Dr. Subhayan Mukherjee, Dr. Dilrukshi Gamage, and the Data4Transparency (D4T) community on a mixed-methods study of deepfake discourse across Reddit and public Telegram channels, targeted for submission to ICWSM.",
+    date: "August 2026",
+    body: "Our paper, \u201cDeepfake Detection in South Asia,\u201d is in the final stages of write-up ahead of submission.",
   },
   {
     date: "June 2026",
